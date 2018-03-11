@@ -17,25 +17,37 @@ def __init__(self):
     pass
 
 
+#Create the tables specified in this file & commit
 def CreateTables():
     #app.config["SQLALCHEMY_DATABASE_URI"] = Config.conf[
         #"DatabaseURI"]  # 'mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards'
     db.create_all()
+    CommitSession()
     log_inst.Log("Created Tables!", LogLevel.DEBUG)
 
-
+#Insert a single row obj into the DB & commit
 def InsertRowObject(obj):
-    db.session.add(obj)
-    CommitSession()
-    log_inst.Log("Inserted Row Obj", LogLevel.DEBUG)
+    try:
+        db.session.add(obj)
+        CommitSession()
+        log_inst.Log("Inserted Row Obj: %s" % (obj), LogLevel.DEBUG)
+        return True
+    except error:
+        log_inst.Log("Failed to insert Row Obj: %s" % (obj), LogLevel.ERROR)
+        return False
 
-
+#Delete a single row obj from the DB & commit
 def DeleteRowObject(obj):
-    db.session.delete(obj)
-    CommitSession()
-    log_inst.Log("Deleted Row Obj", LogLevel.DEBUG)
+    try:
+        db.session.delete(obj)
+        CommitSession()
+        log_inst.Log("Deleted Row Obj: %s" % (obj), LogLevel.DEBUG)
+        return True
+    except error:
+        log_inst.Log("Failed to delete Row Obj: %s" % (obj), LogLevel.ERROR)
+        return False
 
-
+#Commit the current session to the DB
 def CommitSession():
     db.session.commit()
     log_inst.Log("Committed to DB!", LogLevel.DEBUG)
@@ -48,8 +60,7 @@ class Class(db.Model):
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
 
-    def __init__(self, id, name, tutor_id, uni_id):
-        self.id = id
+    def __init__(self, name, tutor_id, uni_id):
         self.name = name
         self.tutor_id = tutor_id
         self.uni_id = uni_id
@@ -66,8 +77,7 @@ class tutor(db.Model):
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
 
-    def __init__(self, id, fname, lname, mobile, username, password, email, uni_id):
-        self.id = id
+    def __init__(self, fname, lname, mobile, username, password, email, uni_id):
         self.fname = fname
         self.lname = lname
         self.mobile = mobile
@@ -87,8 +97,7 @@ class reward(db.Model):
     desc = db.Column(db.String(200))
 
 
-    def __init__(self, id, name, value, requirement, type, tier, desc):
-        self.id = id
+    def __init__(self, name, value, requirement, type, tier, desc):
         self.name = name
         self.value = value
         self.requirement = requirement
@@ -107,8 +116,7 @@ class coupon(db.Model):
     vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.id'))
 
 
-    def __init__(self, id, name, code, expiry, desc, point_cost, vendor_id):
-        self.id = id
+    def __init__(self, name, code, expiry, desc, point_cost, vendor_id):
         self.name = name
         self.code = code
         self.expiry = expiry
@@ -126,8 +134,7 @@ class vendor(db.Model):
     email = db.Column(db.String(50))
 
 
-    def __init__(self, id, name, mobile, website, type, email):
-        self.id = id
+    def __init__(self, name, mobile, website, type, email):
         self.name = name
         self.mobile = mobile
         self.website = website
@@ -142,8 +149,7 @@ class redemption(db.Model):
     coupon_id = db.Column(db.Integer, db.ForeignKey('coupon.id'))
 
 
-    def __init__(self, id, date, student_id, coupon_id):
-        self.id = id
+    def __init__(self, date, student_id, coupon_id):
         self.date = date
         self.student_id = student_id
         self.coupon_id = coupon_id
@@ -170,8 +176,7 @@ class university(db.Model):
     mobile_no = db.Column(db.String(50))
 
 
-    def __init__(self, id, name, address, mobile_no):
-        self.id = id
+    def __init__(self, name, address, mobile_no):
         self.name = name
         self.address = address
         self.mobile_no = mobile_no
@@ -187,11 +192,10 @@ class student(db.Model):
     birth = db.Column(db.DateTime)
     type = db.Column(db.Integer)
     email = db.Column(db.String(50))
+    auth_status = db.Column(db.Integer)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
-
-    def __init__(self, id, fname, lname, mobile_no, username, password, birth, type, email, uni_id):
-        self.id = id
+    def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, uni_id):
         self.fname = fname
         self.lname = lname
         self.mobile_no = mobile_no
@@ -200,6 +204,7 @@ class student(db.Model):
         self.birth = birth
         self.type = type
         self.email = email
+        self.auth_status = auth_status
         self.uni_id = uni_id
 
 

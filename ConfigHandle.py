@@ -12,12 +12,14 @@ class Config:
     config_name = "admin.cfg"
 
     def __init__(self):
+        #Check if config file has been initialzed & create the file
         if(self.config_file == None):
             self.CreateConfig()
             if(self.config_file.name == self.config_name):
                 self.GetConfig()
                 self.config_file.close()
 
+    #Create the config file
     def CreateConfig(self):
         print("Creating")
         if (not os.path.exists(self.config_name)):
@@ -27,6 +29,7 @@ class Config:
         else:
              self.config_file = open(self.config_name, "r")
 
+    #Read and parse the config file
     def GetConfig(self):
         lines = self.config_file.read().splitlines()
         for line in lines:
