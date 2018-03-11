@@ -10,7 +10,7 @@ import ResponseHandle, SQLHandle
 from dateutil import parser
 from itsdangerous import URLSafeSerializer
 from flask import Flask
-from flask_mail import Mail
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -42,6 +42,8 @@ def RegisterStudent(req_data):
                 log_inst.Log("Registered new student: %s" % (req_data['username']), LogLevel.DEBUG)
                 st_test = SQLHandle.student.query.filter_by(username=req_data['username']).first()
                 print(st_test.__dict__)
+                auth_token = GenerateEmailAuth(req_data['email'])
+                SendAuthEmail(req_data['email'], auth_token)
             else:
                 response = ResponseHandle.GenerateResponse('registration_failed')
 
@@ -74,8 +76,12 @@ def VerifyStudentEmailAuth(token):
         return False
 
 def SendAuthEmail(email, auth_token):
-    msg = Message("test", sender=("Uniwards", "confirmation@uniwards.xyz"), recipients=['umayr.sheik@gmail.com'])
-    msg.body = "Shook"
+    msg = Message("Confirmation", sender=("Uniwards", "confirmation@uniwards.xyz"), recipients=[email])
+    msg.body = """<h1>Thank you for registering with Uniwards!</h1>
+                  <p>Below is your confirmation link, please click it to finalize the registration process!</p>
+                  <p><a href="%s"</a></p>
+                  <br>
+                  <p>Good Luck!</p>""" % ("uniwards.xyz/api/auth_user/" + auth_token)
     msg.html = "<p>SHOOK</p>"
     mail.send(msg)
 

@@ -7,8 +7,16 @@ app.config['SECURITY_PASSWORD_SALT'] = 'Q?DLx(M-)8er&cbx*|ZJTNAjNt{rm69-g?yc%U=d
 
 @app.route('/api')
 def hello_world():
+    AlwaysRun()
     return 'Hello World!'
 
+@app.route('/api/auth_user/<int:auth_token>')
+def AuthUser(auth_token):
+    if(RegistrationHandle.VerifyStudentEmailAuth(auth_token)):
+        return 'Confirmed'
+    else:
+        return 'Shit hit the fan'
+    
 @app.route('/api/registeruser', methods = ['POST'])
 def RegisterUser():
     if(LoginHandle.TokenVerification(request.headers['Token'])):
@@ -33,4 +41,3 @@ if __name__ == '__main__':
     ResponseHandle.PrintResponses()
     SQLHandle.CreateTables()
     app.run(host='0.0.0.0')
-    AlwaysRun()
