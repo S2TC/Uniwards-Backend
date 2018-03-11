@@ -17,11 +17,13 @@ mail = Mail(app)
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'root'
 app.config['MAIL_USERNAME'] = 'Un1w4r65321!&'
+app.config['SECRET_KEY'] = '*EtG*J 8);lJzP`HF}S5_v>aFLHX6D>qu)~&q5xF+rY{Fqixz,5A#h]M`Q%?+?gG'
+app.config['SECURITY_PASSWORD_SALT'] = 'Q?DLx(M-)8er&cbx*|ZJTNAjNt{rm69-g?yc%U=dNsho8QG6Z~twkM`^GU(]+EJA'
 log_inst = Logger("RegistrationHandle.txt")
 
 
 def RegisterStudent(req_data):
-    try:
+    #try:
         temp_student_username = SQLHandle.student.query.filter_by(username=req_data['username']).first()
         temp_student_email = SQLHandle.student.query.filter_by(email=req_data['email']).first()
         response = None
@@ -48,7 +50,7 @@ def RegisterStudent(req_data):
                 response = ResponseHandle.GenerateResponse('registration_failed')
 
         return response
-    except Exception as error:
+    #except Exception as error:
         log_inst.Log(error, LogLevel.ERROR)
         return ResponseHandle.GenerateResponse('registration_failed')
 
@@ -76,13 +78,13 @@ def VerifyStudentEmailAuth(token):
         return False
 
 def SendAuthEmail(email, auth_token):
+    url_str = "uniwards.xyz/api/auth_user/%s" % (auth_token)
     msg = Message("Confirmation", sender=("Uniwards", "confirmation@uniwards.xyz"), recipients=[email])
-    msg.body = """<h1>Thank you for registering with Uniwards!</h1>
+    msg.html = """<h1>Thank you for registering with Uniwards!</h1>
                   <p>Below is your confirmation link, please click it to finalize the registration process!</p>
                   <p><a href="%s"</a></p>
                   <br>
-                  <p>Good Luck!</p>""" % ("uniwards.xyz/api/auth_user/" + auth_token)
-    msg.html = "<p>SHOOK</p>"
+                  <p>Good Luck!</p>""" % (url_str)
     mail.send(msg)
 
 def CheckRegistrationStatus():

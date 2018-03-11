@@ -2,8 +2,6 @@ from flask import Flask, request
 from ConfigHandle import Config
 import SQLHandle, RegistrationHandle, LoginHandle, ResponseHandle
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '*EtG*J 8);lJzP`HF}S5_v>aFLHX6D>qu)~&q5xF+rY{Fqixz,5A#h]M`Q%?+?gG'
-app.config['SECURITY_PASSWORD_SALT'] = 'Q?DLx(M-)8er&cbx*|ZJTNAjNt{rm69-g?yc%U=dNsho8QG6Z~twkM`^GU(]+EJA'
 
 @app.route('/api')
 def hello_world():
@@ -16,7 +14,7 @@ def AuthUser(auth_token):
         return 'Confirmed'
     else:
         return 'Shit hit the fan'
-    
+
 @app.route('/api/registeruser', methods = ['POST'])
 def RegisterUser():
     if(LoginHandle.TokenVerification(request.headers['Token'])):
@@ -34,10 +32,11 @@ def TestFunc():
     pass
 
 def AlwaysRun():
-    RegistrationHandle.SendAuthEmail(0,0)
+    RegistrationHandle.SendAuthEmail('test@uniwards.xyz', '123')
 
 if __name__ == '__main__':
     config = Config()
     ResponseHandle.PrintResponses()
     SQLHandle.CreateTables()
+    #AlwaysRun()
     app.run(host='0.0.0.0')
