@@ -8,13 +8,13 @@ responses = {"registration_successful": (201, "success"),
              "registration_failed": (201, "fail"),
              "registration_username_already_registered": (200, "username taken"),
              "registration_email_already_registered": (200, "email registered"),
-             "registration_auth_required": (2200, "test"),
-             "registration_already_registered": (2200, "test"),
-             "bad_token": (403, "test"),
-             "expired_token": (403, "test"),
-             "login_wrong_username": (400, "test"),
-             "login_wrong_password": (400, "test"),
-             "login_unregistered": (400, "test")}
+             "registration_auth_required": (2200, "email auth req"),
+             "registration_already_registered": (2200, "already registered"),
+             "bad_token": (403, "bad token"),
+             "expired_token": (403, "expired token"),
+             "login_wrong_username": (400, "wrong username"),
+             "login_wrong_password": (400, "wrong pass"),
+             "login_unregistered": (400, "unregistered")}
 
 
 def GenerateResponse(response_type):

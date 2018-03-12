@@ -57,8 +57,7 @@ def RegisterStudent(req_data):
         return ResponseHandle.GenerateResponse('registration_failed')
 
 def HashPass(password):
-    hash = pbkdf2_sha256.encrypt(password, rounds=200000, salt_size=16)
-    return hash
+    return pbkdf2_sha256.hash(password)
 
 
 def GenerateEmailAuth(email):
@@ -83,7 +82,7 @@ def VerifyStudentEmailAuth(token):
         return False
 
 def SendAuthEmail(email, auth_token):
-    url_str = "uniwards.xyz/api/auth_user/%s" % (auth_token)
+    url_str = "uniwards.xyz:5000/api/auth_user/%s" % (auth_token)
     msg = Message("Confirmation", sender=("Uniwards", "confirmation@uniwards.xyz"), recipients=[email])
     msg.html = """<h1>Thank you for registering with Uniwards!</h1>
                   <p>Below is your confirmation link, please click it to finalize the registration process!</p>

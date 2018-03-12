@@ -8,7 +8,7 @@ def hello_world():
     AlwaysRun()
     return 'Hello World!'
 
-@app.route('/api/auth_user/<int:auth_token>')
+@app.route('/api/auth_user/<auth_token>')
 def AuthUser(auth_token):
     if(RegistrationHandle.VerifyStudentEmailAuth(auth_token)):
         return 'Confirmed'
@@ -46,6 +46,7 @@ def AlwaysRun():
 if __name__ == '__main__':
     config = Config()
     ResponseHandle.PrintResponses()
+    SQLHandle.db.drop_all()
     SQLHandle.CreateTables()
     #AlwaysRun()
     app.run(host='0.0.0.0')
