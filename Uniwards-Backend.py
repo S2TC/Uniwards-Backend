@@ -27,9 +27,7 @@ def RegisterUser():
 
 @app.route('/api/studentlogin', methods = ['POST'])
 def StudentLogin():
-    response = LoginHandle.TokenCheckStub(request.headers['Token'])
-    if(response == 1):
-        response = LoginHandle.StudentLogin(request.form)
+    response = LoginHandle.StudentLogin(request.form)
 
     return response[0], response[1]
 
@@ -46,7 +44,6 @@ def AlwaysRun():
 if __name__ == '__main__':
     config = Config()
     ResponseHandle.PrintResponses()
-    SQLHandle.db.drop_all()
     SQLHandle.CreateTables()
     #AlwaysRun()
     app.run(host='0.0.0.0')

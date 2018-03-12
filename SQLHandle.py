@@ -19,8 +19,9 @@ def __init__(self):
 
 #Create the tables specified in this file & commit
 def CreateTables():
-    #app.config["SQLALCHEMY_DATABASE_URI"] = Config.conf[
-        #"DatabaseURI"]  # 'mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards'
+    app.config["SQLALCHEMY_DATABASE_URI"] = Config.conf[
+        "DatabaseURI"]  # 'mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards'
+    SQLHandle.db.drop_all()
     db.create_all()
     CommitSession()
     log_inst.Log("Created Tables!", LogLevel.DEBUG)
@@ -188,7 +189,7 @@ class student(db.Model):
     lname = db.Column(db.String(50))
     mobile_no = db.Column(db.String(50))
     username = db.Column(db.String(12))
-    password = db.Column(db.String(12))
+    password = db.Column(db.String(50))
     birth = db.Column(db.DateTime)
     type = db.Column(db.Integer)
     email = db.Column(db.String(50))
