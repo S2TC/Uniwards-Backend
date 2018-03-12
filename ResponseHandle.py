@@ -12,8 +12,10 @@ responses = {"registration_successful": (201, "success"),
              "registration_already_registered": (2200, "already registered"),
              "bad_token": (403, "bad token"),
              "expired_token": (403, "expired token"),
+             "login_success": (200, "success"),
+             "login_incorrect_password": (400, "wrong pass"),
+             "login_nonexistant_user": (400, "user not exist"),
              "login_wrong_username": (400, "wrong username"),
-             "login_wrong_password": (400, "wrong pass"),
              "login_unregistered": (400, "unregistered")}
 
 

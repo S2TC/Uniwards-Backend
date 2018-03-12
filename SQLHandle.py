@@ -56,7 +56,7 @@ def CommitSession():
 
 class Class(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text))
+    name = db.Column(db.Text)
     tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'))
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
