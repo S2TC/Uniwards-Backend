@@ -17,10 +17,19 @@ def AuthUser(auth_token):
 
 @app.route('/api/registeruser', methods = ['POST'])
 def RegisterUser():
-    if(LoginHandle.TokenVerification(request.headers['Token'])):
+    response = LoginHandle.TokenCheckStub(request.headers['Token'])
+    if(response is not 1 and response is not 'Expired'):
         response = RegistrationHandle.RegisterStudent(request.form)
     else:
-        response = ResponseHandle.GenerateResponse('bad_token')
+        response = ResponseHandle.GenerateResponse('registration_already_registered')
+
+    return response[0], response[1]
+
+@app.route('/api/studentlogin', methods = ['POST'])
+def StudentLogin():
+    response = LoginHandle.TokenCheckStub(request.headers['Token'])
+    if(response == 1):
+        response = LoginHandle.StudentLogin(request.form)
 
     return response[0], response[1]
 

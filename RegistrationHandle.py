@@ -11,6 +11,7 @@ from dateutil import parser
 from itsdangerous import URLSafeSerializer
 from flask import Flask
 from flask_mail import Mail, Message
+from passlib.hash import pbkdf2_sha256
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -35,8 +36,9 @@ def RegisterStudent(req_data):
             parsed_bd = parser.parse(req_data['birth'])
             uni_id = (int)(req_data['uni_id'])
             st_type = (int)(req_data['type'])
+            hashed_password = HashPass(req_data['password'])
             new_student = SQLHandle.student(fname=req_data['fname'], lname=req_data['lname'], mobile_no=req_data['mobile_no'],
-                                            username=req_data['username'], password=req_data['password'], birth=parsed_bd, type=st_type,
+                                            username=req_data['username'], password=hashed_password, birth=parsed_bd, type=st_type,
                                             email=req_data['email'], auth_status=0, uni_id=uni_id)
 
             if(SQLHandle.InsertRowObject(new_student)):
@@ -55,17 +57,20 @@ def RegisterStudent(req_data):
         return ResponseHandle.GenerateResponse('registration_failed')
 
 def HashPass(password):
-    pass
+    hash = pbkdf2_sha256.encrypt(password, rounds=200000, salt_size=16)
+    return hash
 
 
 def GenerateEmailAuth(email):
     serializer = URLSafeSerializer(app.config['SECRET_KEY'])
     return serializer.dumps(email, salt=app.config['SECURITY_PASSWORD_SALT'])
 
+def DecryptEmailAuth(token):
+    serializer = URLSafeSerializer(app.config['SECRET_KEY'])
+    return serializer.loads(token, salt=app.config['SECURITY_PASSWORD_SALT'])
 
 def VerifyStudentEmailAuth(token):
-    serializer = URLSafeSerializer(app.config['SECRET_KEY'])
-    email = serializer.loads(token, salt=app.config['SECURITY_PASSWORD_SALT'])
+    email = DecryptEmailAuth(token)
     temp_student = SQLHandle.student.query.filter_by(email=email).first()
     if(temp_student is not None):
         if(temp_student.auth_status is 0):
@@ -82,7 +87,7 @@ def SendAuthEmail(email, auth_token):
     msg = Message("Confirmation", sender=("Uniwards", "confirmation@uniwards.xyz"), recipients=[email])
     msg.html = """<h1>Thank you for registering with Uniwards!</h1>
                   <p>Below is your confirmation link, please click it to finalize the registration process!</p>
-                  <p><a href="%s"</a></p>
+                  <a href="%s"> Click to Confirm</a>
                   <br>
                   <p>Good Luck!</p>""" % (url_str)
     mail.send(msg)
