@@ -37,6 +37,7 @@ def RegisterStudent(req_data):
             uni_id = (int)(req_data['uni_id'])
             st_type = (int)(req_data['type'])
             hashed_password = HashPass(req_data['password'])
+            print hashed_password
             new_student = SQLHandle.student(fname=req_data['fname'], lname=req_data['lname'], mobile_no=req_data['mobile_no'],
                                             username=req_data['username'], password=hashed_password, birth=parsed_bd, type=st_type,
                                             email=req_data['email'], auth_status=0, uni_id=uni_id)

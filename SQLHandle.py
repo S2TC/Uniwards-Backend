@@ -21,7 +21,7 @@ def __init__(self):
 def CreateTables():
     app.config["SQLALCHEMY_DATABASE_URI"] = Config.conf[
         "DatabaseURI"]  # 'mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards'
-    SQLHandle.db.drop_all()
+    db.drop_all()
     db.create_all()
     CommitSession()
     log_inst.Log("Created Tables!", LogLevel.DEBUG)
@@ -56,7 +56,7 @@ def CommitSession():
 
 class Class(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20))
+    name = db.Column(db.Text))
     tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'))
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
@@ -69,12 +69,12 @@ class Class(db.Model):
 
 class tutor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.String(50))
-    lname = db.Column(db.String(50))
-    mobile = db.Column(db.String(50))
-    username = db.Column(db.String(12))
-    password = db.Column(db.String(12))
-    email = db.Column(db.String(50))
+    fname = db.Column(db.Text)
+    lname = db.Column(db.Text)
+    mobile = db.Column(db.Text)
+    username = db.Column(db.Text)
+    password = db.Column(db.Text)
+    email = db.Column(db.Text)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
 
@@ -92,10 +92,10 @@ class reward(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Integer)
     value = db.Column(db.Integer)
-    requirement = db.Column(db.String(50))
+    requirement = db.Column(db.Text)
     type = db.Column(db.Integer)
     tier = db.Column(db.Integer)
-    desc = db.Column(db.String(200))
+    desc = db.Column(db.Text)
 
 
     def __init__(self, name, value, requirement, type, tier, desc):
@@ -109,10 +109,10 @@ class reward(db.Model):
 
 class coupon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    name = db.Column(db.Text)
     code = db.Column(db.Integer)
     expiry = db.Column(db.DateTime)
-    desc = db.Column(db.String(50))
+    desc = db.Column(db.Text)
     point_cost = db.Column(db.Integer)
     vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.id'))
 
@@ -128,11 +128,11 @@ class coupon(db.Model):
 
 class vendor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    mobile = db.Column(db.String(50))
-    website = db.Column(db.String(50))
+    name = db.Column(db.Text)
+    mobile = db.Column(db.Text)
+    website = db.Column(db.Text)
     type = db.Column(db.Integer)
-    email = db.Column(db.String(50))
+    email = db.Column(db.Text)
 
 
     def __init__(self, name, mobile, website, type, email):
@@ -172,9 +172,9 @@ class point(db.Model):
 
 class university(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    address = db.Column(db.String(50))
-    mobile_no = db.Column(db.String(50))
+    name = db.Column(db.Text)
+    address = db.Column(db.Text)
+    mobile_no = db.Column(db.Text)
 
 
     def __init__(self, name, address, mobile_no):
@@ -185,14 +185,14 @@ class university(db.Model):
 
 class student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.String(50))
-    lname = db.Column(db.String(50))
-    mobile_no = db.Column(db.String(50))
-    username = db.Column(db.String(12))
-    password = db.Column(db.String(50))
+    fname = db.Column(db.Text)
+    lname = db.Column(db.Text)
+    mobile_no = db.Column(db.Text)
+    username = db.Column(db.Text)
+    password = db.Column(db.Text)
     birth = db.Column(db.DateTime)
     type = db.Column(db.Integer)
-    email = db.Column(db.String(50))
+    email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
