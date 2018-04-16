@@ -15,10 +15,10 @@ responses = {"registration_successful": (201, "success"),
              "email_auth_verified": (200, "email_auth_verified"),
              "email_auth_failed": (400, "email_auth_failed"),
              "login_success": (200, "0"),
-             "login_incorrect_password": (400, "1"),
-             "login_nonexistant_user": (400, "2"),
-             "login_wrong_username": (400, "3"),
-             "login_unregistered": (400, "4")}
+             "login_incorrect_password": (200, "1"),
+             "login_nonexistant_user": (200, "2"),
+             "login_wrong_username": (200, "3"),
+             "login_unregistered": (200, "4")}
 
 
 #Return json containing response message + HTML response code
