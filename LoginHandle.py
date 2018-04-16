@@ -52,7 +52,7 @@ def StudentLogin(req_data):
         else:
             response = ResponseHandle.GenerateTokenResponse('login_incorrect_password', "")
     else:
-        response = ResponseHandle.GenerateTokenResponse('login_nonexistant_user')
+        response = ResponseHandle.GenerateTokenResponse('login_nonexistant_user', "")
 
     return response
 
