@@ -12,16 +12,19 @@ responses = {"registration_successful": (201, "success"),
              "registration_already_registered": (2200, "already registered"),
              "bad_token": (403, "bad token"),
              "expired_token": (403, "expired token"),
-             "login_success": (200, "success"),
-             "login_incorrect_password": (400, "wrong pass"),
-             "login_nonexistant_user": (400, "user not exist"),
-             "login_wrong_username": (400, "wrong username"),
-             "login_unregistered": (400, "unregistered")}
+             "email_auth_verified": (200, "email_auth_verified"),
+             "email_auth_failed": (400, "email_auth_failed"),
+             "login_success": (200, "0"),
+             "login_incorrect_password": (400, "1"),
+             "login_nonexistant_user": (400, "2"),
+             "login_wrong_username": (400, "3"),
+             "login_unregistered": (400, "4")}
 
 
+#Return json containing response message + HTML response code
 def GenerateResponse(response_type):
     return [jsonify(response_message=responses[response_type][1]), responses[response_type][0]]
 
-def PrintResponses():
-    print(responses)
-    print("ResponseType: %s - ResponseCode:%s - ResponseMessage:%s" % ("bad_token", responses["bad_token"][0], responses["bad_token"][1]))
+#Return json containing response message & JWT + HTML response code
+def GenerateTokenResponse(response_type, raw_token):
+    return [jsonify(response_message=responses[response_type][1], user_token=raw_token), responses[response_type][0]]

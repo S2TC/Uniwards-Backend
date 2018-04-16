@@ -9,20 +9,13 @@ from ConfigHandle import Config
 class Logger():
     log_name = "log.txt"
     log_file = None
-    __dologging__ = False
+    __dologging__ = True
 
     def __init__(self, log_name_inp):
-        if (self.__dologging__ == None):
-            if (Config.conf["do_we_need_logs"] == "False"):
-                self.__dologging__ = False
-            elif (Config.conf["do_we_need_logs"] == "True"):
-                self.__dologging__ = True
-            else:
-                self.__dologging__ = False
-
-        if(self.log_file == None and self.__dologging__):
+        if(self.log_file == None):
             self.log_name = log_name_inp
             self.log_file = open(self.log_name, "a")
+
             if (self.log_file.name == self.log_name):
                 print("Successfully opened Log")
             else:
@@ -33,10 +26,10 @@ class Logger():
     def Log(self, data, log_level):
         time = datetime.datetime.now()
         log_level_str = LogLevel.GetLevelStr(log_level)
-        print("[%s]    -   %s  -   %s" % (log_level_str, time, data))
 
         if (self.__dologging__):
             if((Config.conf['DEBUG'] == "True" and log_level == LogLevel.DEBUG) or (log_level != LogLevel.DEBUG)):
+                print("[%s]    -   %s  -   %s" % (log_level_str, time, data))
                 self.log_file.write("[%s]    -   %s  -   %s\n" % (log_level_str, time, data.encode("utf-8")))
                 self.log_file.flush()
 
@@ -59,3 +52,14 @@ class LogLevel():
             log_level_str = "CRITICAL"
 
         return log_level_str
+
+
+'''
+            if (self.__dologging__ == None):
+                if (Config.conf["do_we_need_logs"] == "False"):
+                    self.__dologging__ = False
+                elif (Config.conf["do_we_need_logs"] == "True"):
+                    self.__dologging__ = True
+                else:
+                    self.__dologging__ = False
+'''

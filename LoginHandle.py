@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '*EtG*J 8);lJzP`HF}S5_v>aFLHX6D>qu)~&q5xF+rY{Fqixz,5A#h]M`Q%?+?gG'
 log_inst = Logger("LoginHandle.txt")
 
+#Decode token & check if expired/invalid
 def TokenVerification(token):
     try:
         payload = jwt.decode(token, app.config['SECRET_KEY'])
@@ -26,10 +27,10 @@ def TokenVerification(token):
     except jwt.InvalidTokenError:
         return 'Invalid'
 
-def TokenCheckStub(token):
-    token = TokenVerification(token)
-    if (token == 1):
-        response = 1
+def TokenCheckStub(raw_token):
+    token = TokenVerification(raw_token)
+    if (token is not 'Expired' or token is not 'Invalid'):
+        response = 'Valid'
     elif (token == 'Invalid'):
         response = ResponseHandle.GenerateResponse('bad_token')
     elif (token == 'Expired'):
@@ -38,16 +39,18 @@ def TokenCheckStub(token):
         response = ResponseHandle.GenerateResponse('bad_token')
 
     return response
+
+#Check if a student with the username exists, and if the passwords match
 def StudentLogin(req_data):
     temp_student = SQLHandle.student.query.filter_by(username=req_data['username']).first()
     response = None
     token = None
     if(temp_student is not None):
         if(VerifyPassword(req_data['password'], temp_student.password)):
-            response = ResponseHandle.GenerateResponse('login_success')
             token = GenerateToken(temp_student.username)
+            response = ResponseHandle.GenerateTokenResponse('login_success', token)
         else:
-            response = ResponseHandle.GenerateResponse('login_incorrect_password')
+            response = ResponseHandle.GenerateTokenResponse('login_incorrect_password', "")
     else:
         response = ResponseHandle.GenerateResponse('login_nonexistant_user')
 
@@ -56,12 +59,14 @@ def StudentLogin(req_data):
 def TutorLogin(req_data):
     pass
 
+#Compare plaintext password to hashed password
 def VerifyPassword(password, hashed_pass):
     if(pbkdf2_sha256.verify(password, hashed_pass)):
         return True
     else:
         return False
 
+#Generate the JWT based on username, expires in 7 days
 def GenerateToken(username):
     try:
         payload = {
