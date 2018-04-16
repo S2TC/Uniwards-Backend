@@ -16,11 +16,12 @@ def hello_world():
 def AuthUser(auth_token):
     if(RegistrationHandle.VerifyStudentEmailAuth(auth_token)):
         log_inst.Log("Verified email for: %s" % (RegistrationHandle.DecryptEmailAuth(auth_token)), LogLevel.DEBUG)
-        return ResponseHandle.GenerateResponse('email_auth_verified')
+        response = ResponseHandle.GenerateResponse('email_auth_verified')
     else:
         log_inst.Log("Failed to verify email for: %s" % (RegistrationHandle.DecryptEmailAuth(auth_token)), LogLevel.DEBUG)
-        return ResponseHandle.GenerateResponse('email_auth_failed')
-
+        response = ResponseHandle.GenerateResponse('email_auth_failed')
+        
+    return response[0], response[1]
 #User Registration endpoint
 @app.route('/api/registeruser', methods = ['POST'])
 def RegisterUser():
