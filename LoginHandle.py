@@ -17,6 +17,18 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '*EtG*J 8);lJzP`HF}S5_v>aFLHX6D>qu)~&q5xF+rY{Fqixz,5A#h]M`Q%?+?gG'
 log_inst = Logger("LoginHandle.txt")
 
+def TokenValidation(token, username):
+    try:
+        payload = jwt.decode(token, app.config['SECRET_KEY'])
+        if(username is payload['sub']):
+            return ResponseHandle.GenerateResponse('token_valid')
+        else:
+            return ResponseHandle.GenerateResponse('token_bad')
+    except jwt.ExpiredSignature:
+        return ResponseHandle.GenerateResponse('token_expired')
+    except jwt.InvalidTokenError:
+        return ResponseHandle.GenerateResponse('token_bad')
+
 #Decode token & check if expired/invalid
 def TokenVerification(token):
     try:
@@ -30,13 +42,13 @@ def TokenVerification(token):
 def TokenCheckStub(raw_token):
     token = TokenVerification(raw_token)
     if (token is not 'Expired' or token is not 'Invalid'):
-        response = 'Valid'
+        response = ResponseHandle.GenerateResponse('token_verified')
     elif (token == 'Invalid'):
-        response = ResponseHandle.GenerateResponse('bad_token')
+        response = ResponseHandle.GenerateResponse('token_bad')
     elif (token == 'Expired'):
-        response = ResponseHandle.GenerateResponse('expired_token')
+        response = ResponseHandle.GenerateResponse('token_expired')
     else:
-        response = ResponseHandle.GenerateResponse('bad_token')
+        response = ResponseHandle.GenerateResponse('token_bad')
 
     return response
 

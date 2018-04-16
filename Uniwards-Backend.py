@@ -20,8 +20,15 @@ def AuthUser(auth_token):
     else:
         log_inst.Log("Failed to verify email for: %s" % (RegistrationHandle.DecryptEmailAuth(auth_token)), LogLevel.DEBUG)
         response = ResponseHandle.GenerateResponse('email_auth_failed')
-        
+
     return response[0], response[1]
+
+@app.route('/api/validate_token/<token>/<username>')
+def ValidateToken(token, username):
+    response = LoginHandle.ValidateToken(token, username)
+    print response
+    return response[0], response[1]
+
 #User Registration endpoint
 @app.route('/api/registeruser', methods = ['POST'])
 def RegisterUser():
