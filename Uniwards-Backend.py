@@ -25,7 +25,7 @@ def AuthUser(auth_token):
 
 @app.route('/api/validate_token/<token>/<username>')
 def ValidateToken(token, username):
-    response = LoginHandle.ValidateToken(token, username)
+    response = LoginHandle.TokenValidation(token, username)
     print response
     return response[0], response[1]
 
