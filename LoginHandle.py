@@ -20,7 +20,7 @@ log_inst = Logger("LoginHandle.txt")
 def TokenValidation(token, username):
     try:
         payload = jwt.decode(token, app.config['SECRET_KEY'])
-        if(username is payload['sub']):
+        if(username == payload['sub']):
             return ResponseHandle.GenerateResponse('token_valid')
         else:
             return ResponseHandle.GenerateResponse('token_bad')
@@ -41,7 +41,7 @@ def TokenVerification(token):
 
 def TokenCheckStub(raw_token):
     token = TokenVerification(raw_token)
-    if (token is not 'Expired' or token is not 'Invalid'):
+    if (token != 'Expired' or token != 'Invalid'):
         response = ResponseHandle.GenerateResponse('token_verified')
     elif (token == 'Invalid'):
         response = ResponseHandle.GenerateResponse('token_bad')

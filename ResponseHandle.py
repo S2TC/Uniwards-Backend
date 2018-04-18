@@ -4,12 +4,12 @@
 """
 from flask import jsonify
 
-responses = {"registration_successful": (201, "success"),
-             "registration_failed": (201, "fail"),
-             "registration_username_already_registered": (200, "username taken"),
-             "registration_email_already_registered": (200, "email registered"),
-             "registration_auth_required": (200, "email auth req"),
-             "registration_already_registered": (200, "already registered"),
+responses = {"register_success": (201, "0"),
+             "register_failed": (201, "1"),
+             "register_username_taken": (200, "2"),
+             "registe_email_taken": (200, "3"),
+             "register_auth_required": (200, "4"),
+             "register_already_registered": (200, "already registered"),
              "token_valid": (200, "0"),
              "token_verfied": (200, "1"),
              "token_bad": (200, "2"),
