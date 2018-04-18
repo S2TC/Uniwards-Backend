@@ -39,7 +39,7 @@ def RegisterUser():
         response = RegistrationHandle.RegisterStudent(request.form)
     else:
         log_inst.Log("Student already registered: %s" % (request.form['username']), LogLevel.DEBUG)
-        response = ResponseHandle.GenerateResponse('registration_already_registered')
+        response = ResponseHandle.GenerateResponse('register_already_registered')
 
     return response[0], response[1]
 

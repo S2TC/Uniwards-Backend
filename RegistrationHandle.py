@@ -29,9 +29,9 @@ def RegisterStudent(req_data):
         temp_student_email = SQLHandle.student.query.filter_by(email=req_data['email']).first()
         response = None
         if(temp_student_email is not None):
-            response = ResponseHandle.GenerateResponse('registration_email_already_registered')
+            response = ResponseHandle.GenerateResponse('register_email_taken')
         elif(temp_student_username is not None):
-            response = ResponseHandle.GenerateResponse('registration_username_already_registered')
+            response = ResponseHandle.GenerateResponse('register_username_taken')
         else:
             parsed_bd = parser.parse(req_data['birth'])
             uni_id = (int)(req_data['uni_id'])
@@ -43,19 +43,19 @@ def RegisterStudent(req_data):
                                             email=req_data['email'], auth_status=0, uni_id=uni_id)
 
             if(SQLHandle.InsertRowObject(new_student)):
-                response = ResponseHandle.GenerateResponse('registration_successful')
+                response = ResponseHandle.GenerateResponse('register_success')
                 log_inst.Log("Registered new student: %s" % (req_data['username']), LogLevel.DEBUG)
                 st_test = SQLHandle.student.query.filter_by(username=req_data['username']).first()
                 print(st_test.__dict__)
                 auth_token = GenerateEmailAuth(req_data['email'])
                 SendAuthEmail(req_data['email'], auth_token)
             else:
-                response = ResponseHandle.GenerateResponse('registration_failed')
+                response = ResponseHandle.GenerateResponse('register_failed')
 
         return response
     #except Exception as error:
         log_inst.Log(error, LogLevel.ERROR)
-        return ResponseHandle.GenerateResponse('registration_failed')
+        return ResponseHandle.GenerateResponse('register_failed')
 
 def HashPass(password):
     return pbkdf2_sha256.hash(password)
