@@ -172,12 +172,14 @@ class point(db.Model):
 
 class university(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    uni_code = db.Column(db.Text)
     name = db.Column(db.Text)
     address = db.Column(db.Text)
     mobile_no = db.Column(db.Text)
 
 
-    def __init__(self, name, address, mobile_no):
+    def __init__(self, uni_code, name, address, mobile_no):
+        self.uni_code = uni_code
         self.name = name
         self.address = address
         self.mobile_no = mobile_no
@@ -194,7 +196,7 @@ class student(db.Model):
     type = db.Column(db.Integer)
     email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
-    uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
+    uni_id = db.Column(db.Text, db.ForeignKey('university.id'))
 
     def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, uni_id):
         self.fname = fname

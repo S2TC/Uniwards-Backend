@@ -4,7 +4,8 @@
 """
 from flask import jsonify
 
-responses = {"register_success": (201, "0"),
+
+responses = {"register_success": (200, "0"),
              "register_failed": (201, "1"),
              "register_username_taken": (200, "2"),
              "registe_email_taken": (200, "3"),
@@ -20,7 +21,14 @@ responses = {"register_success": (201, "0"),
              "login_incorrect_password": (200, "1"),
              "login_nonexistant_user": (200, "2"),
              "login_wrong_username": (200, "3"),
-             "login_unregistered": (200, "4")}
+             "login_unregistered": (200, "4"),
+             "university_get_failed": (200, "0"),
+             "university_register_failed": (200, "1"),
+             "university_delete_failed": (200, "2"),
+             "university_update_failed": (200, "3"),
+             "university_register_success": (200, "4"),
+             "university_delete_success": (200, "5"),
+             "university_update_success": (200, "6")}
 
 
 #Return json containing response message + HTML response code
@@ -30,3 +38,9 @@ def GenerateResponse(response_type):
 #Return json containing response message & JWT + HTML response code
 def GenerateTokenResponse(response_type, raw_token):
     return [jsonify(response_message=responses[response_type][1], user_token=raw_token), responses[response_type][0]]
+
+def GenerateUniversitiesResponse(universities):
+    return [jsonify(universities=universities), 200]
+
+def GenerateUniversityResponse(university):
+    return [jsonify(university=university), 200]
