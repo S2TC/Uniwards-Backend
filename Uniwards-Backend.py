@@ -222,7 +222,7 @@ def CreateEnrolment():
     return response[0], response[1]
 
 @app.route('/api/newuniclass', methods = ['POST'])
-def CreateEnrolment():
+def CreateUniclass():
     response = UniclassHandle.RegisterUniclass(request.form)
     return response[0], response[1]
 '''-------------------------------------------------------'''
@@ -237,6 +237,24 @@ def TestFunc():
 
 def AlwaysRun():
     RegistrationHandle.SendAuthEmail('test@uniwards.xyz', '123')
+
+
+def list_routes():
+    import urllib
+    output = []
+    for rule in app.url_map.iter_rules():
+
+        options = {}
+        for arg in rule.arguments:
+            options[arg] = "[{0}]".format(arg)
+
+        methods = ','.join(rule.methods)
+        url = url_for(rule.endpoint, **options)
+        line = urllib.unquote("{:50s} {:20s} {}".format(rule.endpoint, methods, url))
+        output.append(line)
+
+    for line in sorted(output):
+        log_inst.Log(line)
 
 if __name__ == '__main__':
     config = Config()

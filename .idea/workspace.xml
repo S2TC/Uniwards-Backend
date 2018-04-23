@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c7289b5-d3d0-4531-a6f5-2da314e60760" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ResponseHandle.py" afterPath="$PROJECT_DIR$/ResponseHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLHandle.py" afterPath="$PROJECT_DIR$/SQLHandle.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TutorHandle.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.py" afterPath="$PROJECT_DIR$/Uniwards-Backend.py" />
     </list>
     <ignored path="Uniwards-Backend.iws" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3213">
-              <caret line="224" column="22" selection-start-line="224" selection-start-column="22" selection-end-line="224" selection-end-column="22" />
+            <state relative-caret-position="258">
+              <caret line="256" column="26" selection-start-line="256" selection-start-column="26" selection-end-line="256" selection-end-column="26" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -905,8 +904,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="224" column="22" selection-start-line="224" selection-start-column="22" selection-end-line="224" selection-end-column="22" />
+        <state relative-caret-position="258">
+          <caret line="256" column="26" selection-start-line="256" selection-start-column="26" selection-end-line="256" selection-end-column="26" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
