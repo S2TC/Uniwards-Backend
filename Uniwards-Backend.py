@@ -1,6 +1,7 @@
 from flask import Flask, request
 from ConfigHandle import Config
-import SQLHandle, RegistrationHandle, LoginHandle, ResponseHandle, UniversityHandle
+import SQLHandle, RegistrationHandle, LoginHandle, ResponseHandle, UniversityHandle, CouponHandle, RewardHandle
+import PointHandle, RedemptionHandle, VendorHandle, EnrolmentHandle
 from LogHandle import Logger, LogLevel
 
 app = Flask(__name__)
@@ -42,7 +43,7 @@ def RegisterUser():
     print response
     if(response is not 'Valid' and response is not 'Expired'):
         log_inst.Log("Registering student: %s" % (request.form['username']), LogLevel.DEBUG)
-        response = RegistrationHandle.RegisterStudent(request.form)
+        response = RegistrationHandle.RegisterUser(request.form)
     else:
         log_inst.Log("Student already registered: %s" % (request.form['username']), LogLevel.DEBUG)
         response = ResponseHandle.GenerateResponse('register_already_registered')
@@ -51,10 +52,10 @@ def RegisterUser():
 
 
 #Student Login endpoint
-@app.route('/api/studentlogin', methods = ['POST'])
+@app.route('/api/login', methods = ['POST'])
 def StudentLogin():
     log_inst.Log("Student attempting to login: %s" % (request.form['username']), LogLevel.DEBUG)
-    response = LoginHandle.StudentLogin(request.form)
+    response = LoginHandle.Login(request.form)
     if(response[0] == 'login_success'):
         log_inst.Log("Student login success: %s" % (request.form['username']), LogLevel.DEBUG)
     return response[0], response[1]
@@ -76,7 +77,95 @@ def GetUniversities():
     response = UniversityHandle.GetUniversities()
     return response[0], response[1]
 
+@app.route('/api/getcouponbyid/<coupon_id>')
+def GetCouponByID(coupon_id):
+    response = CouponHandle.GetCouponByID(coupon_id)
+    return response[0], response[1]
 
+@app.route('/api/getcouponbyvendor/<vendor_id>')
+def GetCouponByVendor(vendor_id):
+    response = CouponHandle.GetCouponByVendor(vendor_id)
+    return response[0], response[1]
+
+@app.route('/api/getrewardbyid/<reward_id>')
+def GetRewardByID(reward_id):
+    response = RewardHandle.GetRewardByID(reward_id)
+    return response[0], response[1]
+
+@app.route('/api/getrewardsbytier/<tier>')
+def GetCouponByVendor(tier):
+    response = RewardHandle.GetRewardsByTier(tier)
+    return response[0], response[1]
+
+@app.route('/api/getrewards')
+def GetRwards():
+    response = RewardHandle.GetRewards()
+    return response[0], response[1]
+
+@app.route('/api/getpointsbystudentid/<student_id>')
+def GetPointsByStudentID(student_id):
+    response = PointHandle.GetPointsByStudentID(student_id)
+    return response[0], response[1]
+
+@app.route('/api/getpointsbytutorid/<tutor_id>')
+def GetPointsByTutorID(tutor_id):
+    response = PointHandle.GetPointsByTutorID(tutor_id)
+    return response[0], response[1]
+
+@app.route('/api/getpointsbyrewardid/<reward_id>')
+def GetPointsByTutorID(reward_id):
+    response = PointHandle.GetPointsByRewardID(reward_id)
+    return response[0], response[1]
+
+@app.route('/api/getvendorbyid/<vendor_id>')
+def GetVendorByID(vendor_id):
+    response = VendorHandle.GetVendorByID(vendor_id)
+    return response[0], response[1]
+
+@app.route('/api/getvendorsbytype/<type>')
+def GetVendorsByType(type):
+    response = VendorHandle.GetVendorsByType(type)
+    return response[0], response[1]
+
+@app.route('/api/getvendors')
+def GetVendors():
+    response = VendorHandle.GetVendors()
+    return response[0], response[1]
+
+@app.route('/api/getredemptionbyid/<redemption_id>')
+def GetRedemptionByID(redemption_id):
+    response = RedemptionHandle.GetRedemptionByID(redemption_id)
+    return response[0], response[1]
+
+@app.route('/api/getredemptionsbystudentid/<student_id>')
+def GetRedemptionsByCouponId(student_id):
+    response = RedemptionHandle.GetRedemptionsByStudentID(student_id)
+    return response[0], response[1]
+
+@app.route('/api/getredemptionsbycouponid/<coupon_id>')
+def GetRedemptionsByCouponId(coupon_id):
+    response = RedemptionHandle.GetRedemptionsByCouponID(coupon_id)
+    return response[0], response[1]
+
+@app.route('/api/getredemptions')
+def GetRedemptions():
+    response = RedemptionHandle.GetRedemptions()
+    return response[0], response[1]
+
+@app.route('/api/getenrolmentssbystudentid/<student_id>')
+def GetEnrolmentsByStudentID(student_id):
+    response = EnrolmentHandle.GetEnrolmentsByStudentID(student_id)
+    return response[0], response[1]
+
+@app.route('/api/getredemptionsbycouponid/<coupon_id>')
+def GetEnrolmentsByClassID(class_id):
+    response = EnrolmentHandle.GetEnrolmentsByClassID(class_id)
+    return response[0], response[1]
+
+@app.route('/api/getenrolments')
+def GetEnrolments():
+    response = EnrolmentHandle.GetEnrolments()
+    return response[0], response[1]
 '''-------------------------------------------------------'''
 
 
@@ -84,11 +173,38 @@ def GetUniversities():
 
 @app.route('/api/registeruniversity', methods = ['POST'])
 def CreateUniversity():
-    print request.form['uni_code']
     response = UniversityHandle.RegisterUniversity(request.form)
     return response[0], response[1]
 
+@app.route('/api/newcoupon', methods = ['POST'])
+def CreateCoupon():
+    response = CouponHandle.RegisterCoupon(request.form)
+    return response[0], response[1]
 
+@app.route('/api/newreward', methods = ['POST'])
+def CreateReward():
+    response = RewardHandle.RegisterReward(request.form)
+    return response[0], response[1]
+
+@app.route('/api/newpoint', methods = ['POST'])
+def CreatePoint():
+    response = PointHandle.RegisterPoint(request.form)
+    return response[0], response[1]
+
+@app.route('/api/newvendor', methods = ['POST'])
+def CreateVendor():
+    response = VendorHandle.RegisterVendor(request.form)
+    return response[0], response[1]
+
+@app.route('/api/newredemption', methods = ['POST'])
+def CreateRedemption():
+    response = RedemptionHandle.RegisterRedemption(request.form)
+    return response[0], response[1]
+
+@app.route('/api/newenrolment', methods = ['POST'])
+def CreateEnrolment():
+    response = EnrolmentHandle.RegisterRedemption(request.form)
+    return response[0], response[1]
 '''-------------------------------------------------------'''
 
 

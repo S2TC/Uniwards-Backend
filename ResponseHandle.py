@@ -12,7 +12,7 @@ responses = {"register_success": (200, "0"),
              "register_auth_required": (200, "4"),
              "register_already_registered": (200, "already registered"),
              "token_valid": (200, "0"),
-             "token_verfied": (200, "1"),
+             "token_verified": (200, "1"),
              "token_bad": (200, "2"),
              "token_expired": (200, "3"),
              "email_auth_verified": (200, "email_auth_verified"),
@@ -28,7 +28,49 @@ responses = {"register_success": (200, "0"),
              "university_update_failed": (200, "3"),
              "university_register_success": (200, "4"),
              "university_delete_success": (200, "5"),
-             "university_update_success": (200, "6")}
+             "university_update_success": (200, "6"),
+             "coupon_get_failed": (200, "0"),
+             "coupon_register_failed": (200, "1"),
+             "coupon_delete_failed": (200, "2"),
+             "coupon_update_failed": (200, "3"),
+             "coupon_register_success": (200, "4"),
+             "coupon_delete_success": (200, "5"),
+             "coupon_update_success": (200, "6"),
+             "reward_get_failed": (200, "0"),
+             "reward_register_failed": (200, "1"),
+             "reward_delete_failed": (200, "2"),
+             "reward_update_failed": (200, "3"),
+             "reward_register_success": (200, "4"),
+             "reward_delete_success": (200, "5"),
+             "reward_update_success": (200, "6"),
+             "point_get_failed": (200, "0"),
+             "point_register_failed": (200, "1"),
+             "point_delete_failed": (200, "2"),
+             "point_update_failed": (200, "3"),
+             "point_register_success": (200, "4"),
+             "point_delete_success": (200, "5"),
+             "point_update_success": (200, "6"),
+             "vendor_get_failed": (200, "0"),
+             "vendor_register_failed": (200, "1"),
+             "vendor_delete_failed": (200, "2"),
+             "vendor_update_failed": (200, "3"),
+             "vendor_register_success": (200, "4"),
+             "vendor_delete_success": (200, "5"),
+             "vendor_update_success": (200, "6"),
+             "redemption_get_failed": (200, "0"),
+             "redemption_register_failed": (200, "1"),
+             "redemption_delete_failed": (200, "2"),
+             "redemption_update_failed": (200, "3"),
+             "redemption_register_success": (200, "4"),
+             "redemption_delete_success": (200, "5"),
+             "redemption_update_success": (200, "6"),
+             "enrollment_get_failed": (200, "0"),
+             "enrollment_register_failed": (200, "1"),
+             "enrollment_delete_failed": (200, "2"),
+             "enrollment_update_failed": (200, "3"),
+             "enrollment_register_success": (200, "4"),
+             "enrollment_delete_success": (200, "5"),
+             "enrollment_update_success": (200, "6")}
 
 
 #Return json containing response message + HTML response code
@@ -44,3 +86,39 @@ def GenerateUniversitiesResponse(universities):
 
 def GenerateUniversityResponse(university):
     return [jsonify(university=university), 200]
+
+def GenerateCouponsResponse(coupons):
+    return [jsonify(coupons=coupons), 200]
+
+def GenerateCouponResponse(coupon):
+    return [jsonify(coupon=coupon), 200]
+
+def GenerateRewardsResponse(rewards):
+    return [jsonify(rewards=rewards), 200]
+
+def GenerateRewardResponse(reward):
+    return [jsonify(reward=reward), 200]
+
+def GeneratePointsResponse(points):
+    return [jsonify(coupons=points), 200]
+
+def GeneratePointResponse(point):
+    return [jsonify(point=point), 200]
+
+def GenerateVendorsResponse(vendors):
+    return [jsonify(vendors=vendors), 200]
+
+def GenerateVendorResponse(vendor):
+    return [jsonify(vendor=vendor), 200]
+
+def GenerateRedemptionsResponse(redemption):
+    return [jsonify(redemption=redemption), 200]
+
+def GenerateRedemptionResponse(redemption):
+    return [jsonify(Redemption=redemption), 200]
+
+def GenerateEnrolmentsResponse(enrolments):
+    return [jsonify(enrolments=enrolments), 200]
+
+def GenerateEnrolmentResponse(enrolments):
+    return [jsonify(enrolments=enrolments), 200]

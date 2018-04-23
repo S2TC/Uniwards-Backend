@@ -23,14 +23,14 @@ app.config['SECURITY_PASSWORD_SALT'] = 'Q?DLx(M-)8er&cbx*|ZJTNAjNt{rm69-g?yc%U=d
 log_inst = Logger("RegistrationHandle.txt")
 
 
-def RegisterStudent(req_data):
+def RegisterUser(req_data):
     #try:
-        temp_student_username = SQLHandle.student.query.filter_by(username=req_data['username']).first()
-        temp_student_email = SQLHandle.student.query.filter_by(email=req_data['email']).first()
+        temp_user_username = SQLHandle.student.query.filter_by(username=req_data['username']).first()
+        temp_user_email = SQLHandle.student.query.filter_by(email=req_data['email']).first()
         response = None
-        if(temp_student_email is not None):
+        if(temp_user_email is not None):
             response = ResponseHandle.GenerateResponse('register_email_taken')
-        elif(temp_student_username is not None):
+        elif(temp_user_username is not None):
             response = ResponseHandle.GenerateResponse('register_username_taken')
         else:
             parsed_bd = parser.parse(req_data['birth'])
@@ -38,11 +38,11 @@ def RegisterStudent(req_data):
             st_type = (int)(req_data['st_type'])
             hashed_password = HashPass(req_data['password'])
             print hashed_password
-            new_student = SQLHandle.student(fname=req_data['fname'], lname=req_data['lname'], mobile_no=req_data['mobile'],
+            new_user = SQLHandle.student(fname=req_data['fname'], lname=req_data['lname'], mobile_no=req_data['mobile'],
                                             username=req_data['username'], password=hashed_password, birth=parsed_bd, type=st_type,
                                             email=req_data['email'], auth_status=0, uni_id=uni_id)
 
-            if(SQLHandle.InsertRowObject(new_student)):
+            if(SQLHandle.InsertRowObject(new_user)):
                 response = ResponseHandle.GenerateResponse('register_success')
                 log_inst.Log("Registered new student: %s" % (req_data['username']), LogLevel.DEBUG)
                 st_test = SQLHandle.student.query.filter_by(username=req_data['username']).first()
@@ -61,6 +61,7 @@ def HashPass(password):
     return pbkdf2_sha256.hash(password)
 
 
+#TODO fix with exceptions
 def GenerateEmailAuth(email):
     serializer = URLSafeSerializer(app.config['SECRET_KEY'])
     return serializer.dumps(email, salt=app.config['SECURITY_PASSWORD_SALT'])

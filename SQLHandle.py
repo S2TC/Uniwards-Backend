@@ -52,11 +52,13 @@ def CommitSession():
     db.session.commit()
     log_inst.Log("Committed to DB!", LogLevel.DEBUG)
 
+def GetListOfRows(query_result):
+    return [row.todict() for row in query_result]
 
 class Class(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
-    tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'))
+    tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
 
@@ -66,29 +68,6 @@ class Class(db.Model):
         self.uni_id = uni_id
 
     def todict(self):
-        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
-
-class tutor(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.Text)
-    lname = db.Column(db.Text)
-    mobile = db.Column(db.Text)
-    username = db.Column(db.Text)
-    password = db.Column(db.Text)
-    email = db.Column(db.Text)
-    uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
-
-
-    def __init__(self, fname, lname, mobile, username, password, email, uni_id):
-        self.fname = fname
-        self.lname = lname
-        self.mobile = mobile
-        self.username = username
-        self.password = password
-        self.email = email
-        self.uni_id = uni_id
-
-    def dict(self):
         return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 
@@ -174,7 +153,7 @@ class redemption(db.Model):
 class point(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     reward_id = db.Column(db.Integer, db.ForeignKey('reward.id'), primary_key=True)
-    tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'), primary_key=True)
+    tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     date = db.Column(db.DateTime, primary_key=True)
 
 
@@ -190,7 +169,7 @@ class point(db.Model):
 
 class university(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    uni_code = db.Column(db.Text)
+    uni_code = db.Column(db.Text, unique=True)
     name = db.Column(db.Text)
     address = db.Column(db.Text)
     mobile_no = db.Column(db.Text)
@@ -211,11 +190,11 @@ class student(db.Model):
     fname = db.Column(db.Text)
     lname = db.Column(db.Text)
     mobile_no = db.Column(db.Text)
-    username = db.Column(db.Text)
+    username = db.Column(db.Text, unique=True)
     password = db.Column(db.Text)
     birth = db.Column(db.DateTime)
     type = db.Column(db.Integer)
-    email = db.Column(db.Text)
+    email = db.Column(db.Text, unique=True)
     auth_status = db.Column(db.Integer)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
@@ -238,19 +217,19 @@ class student(db.Model):
 class enrolled(db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('class.id'), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    EN_DATE = db.Column(db.DateTime)
+    en_date = db.Column(db.DateTime)
 
     def __init__(self, class_id, student_id, date):
         self.class_id = class_id
         self.student_id = student_id
-        self.date = date
+        self.en_date = date
 
     def todict(self):
         return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 
 class beacon(db.Model):
-    tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'), primary_key=True)
+    tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     class_id = db.Column(db.Integer, db.ForeignKey('class.id'), primary_key=True)
     longitude = db.Column(db.Integer)
     latitude = db.Column(db.Integer)

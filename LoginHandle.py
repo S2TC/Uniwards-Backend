@@ -20,7 +20,7 @@ log_inst = Logger("LoginHandle.txt")
 def TokenValidation(token, username):
     try:
         payload = jwt.decode(token, app.config['SECRET_KEY'])
-        if(username == payload['sub']):
+        if(username == payload['username']):
             return ResponseHandle.GenerateResponse('token_valid')
         else:
             return ResponseHandle.GenerateResponse('token_bad')
@@ -33,7 +33,7 @@ def TokenValidation(token, username):
 def TokenVerification(token):
     try:
         payload = jwt.decode(token, app.config['SECRET_KEY'])
-        return payload['sub']
+        return payload['username']
     except jwt.ExpiredSignature:
         return 'Expired'
     except jwt.InvalidTokenError:
@@ -53,13 +53,11 @@ def TokenCheckStub(raw_token):
     return response
 
 #Check if a student with the username exists, and if the passwords match
-def StudentLogin(req_data):
-    temp_student = SQLHandle.student.query.filter_by(username=req_data['username']).first()
-    response = None
-    token = None
-    if(temp_student is not None):
-        if(VerifyPassword(req_data['password'], temp_student.password)):
-            token = GenerateToken(temp_student.username)
+def Login(req_data):
+    temp_user = SQLHandle.student.query.filter_by(username=req_data['username']).first()
+    if(temp_user is not None):
+        if(VerifyPassword(req_data['password'], temp_user.password)):
+            token = GenerateToken(temp_user.username)
             response = ResponseHandle.GenerateTokenResponse('login_success', token)
         else:
             response = ResponseHandle.GenerateTokenResponse('login_incorrect_password', "")
@@ -67,9 +65,6 @@ def StudentLogin(req_data):
         response = ResponseHandle.GenerateTokenResponse('login_nonexistant_user', "")
 
     return response
-
-def TutorLogin(req_data):
-    pass
 
 #Compare plaintext password to hashed password
 def VerifyPassword(password, hashed_pass):
@@ -79,12 +74,12 @@ def VerifyPassword(password, hashed_pass):
         return False
 
 #Generate the JWT based on username, expires in 7 days
-def GenerateToken(username):
+def GenerateToken(username, hashed_pass):
     try:
         payload = {
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=7),
             'iat': datetime.datetime.utcnow(),
-            'sub': username
+            'username': username
         }
 
         return jwt.encode(payload, app.config['SECRET_KEY'], algorithm='HS256')
