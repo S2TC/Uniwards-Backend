@@ -24,7 +24,7 @@ class Config:
         print("Creating")
         if (not os.path.exists(self.config_name)):
             self.config_file = open(self.config_name, "w+")
-            self.config_file.write("[SQL]\nDatabaseURI;:;mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards\n[Config]\nDEBUG;:;True\ndo_we_need_logs;:;True")
+            self.config_file.write("[Config]\nDEBUG;:;True\ndo_we_need_logs;:;True")
             self.config_file.flush()
         else:
              self.config_file = open(self.config_name, "r")

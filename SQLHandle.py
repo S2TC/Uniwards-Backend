@@ -19,8 +19,7 @@ def __init__(self):
 
 #Create the tables specified in this file & commit
 def CreateTables():
-    app.config["SQLALCHEMY_DATABASE_URI"] = Config.conf[
-        "DatabaseURI"]  # 'mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards'
+    app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+mysqlconnector://root:ThreeCupsOfCoffee123!@@localhost/Uniwards'
     db.drop_all()
     db.create_all()
     CommitSession()
