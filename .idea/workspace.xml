@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c7289b5-d3d0-4531-a6f5-2da314e60760" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CouponHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorHandle.py" afterPath="$PROJECT_DIR$/ErrorHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ResponseHandle.py" afterPath="$PROJECT_DIR$/ResponseHandle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLHandle.py" afterPath="$PROJECT_DIR$/SQLHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLHandle.txt" afterPath="$PROJECT_DIR$/SQLHandle.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.py" afterPath="$PROJECT_DIR$/Uniwards-Backend.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.txt" afterPath="$PROJECT_DIR$/Uniwards-Backend.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin.cfg" afterPath="$PROJECT_DIR$/admin.cfg" />
     </list>
     <ignored path="Uniwards-Backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQLHandle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SQLHandle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SQLHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+            <state relative-caret-position="3850">
+              <caret line="198" column="33" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="33" />
               <folding>
                 <element signature="e#97#120#0" expanded="true" />
               </folding>
@@ -88,7 +80,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="network.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://C:/Python27/Lib/site-packages/mysql/connector/network.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="804">
@@ -843,6 +835,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/mysql/connector/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="804">
+          <caret line="511" column="0" selection-start-line="511" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ResponseHandle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-418">
@@ -853,19 +853,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLHandle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        <state relative-caret-position="3850">
+          <caret line="198" column="33" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="33" />
           <folding>
             <element signature="e#97#120#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/mysql/connector/network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="511" column="0" selection-start-line="511" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -196,7 +196,7 @@ class student(db.Model):
     type = db.Column(db.Integer)
     email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
-    uni_id = db.Column(db.Text, db.ForeignKey('university.id'))
+    uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
     def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, uni_id):
         self.fname = fname
