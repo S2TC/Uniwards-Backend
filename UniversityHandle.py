@@ -8,12 +8,16 @@ def GetUniversity(uni_code):
 def GetUniversities():
     temp_universities = SQLHandle.university.query.all()
     response = ResponseHandle.GenerateUniversitiesResponse(temp_universities)
+    print response
     return response
 
 def RegisterUniversity(req_data):
     temp_university = SQLHandle.university(uni_code=req_data['uni_code'], name=req_data['name'], address=req_data['address'],
                                            mobile_no=req_data['mobile_no'])
-    response = ResponseHandle.GenerateResponse('university_register_success')
+    if(SQLHandle.InsertRowObject(new_student)):
+        response = ResponseHandle.GenerateResponse('university_register_success')
+    else:
+        response = ResponseHandle.GenerateResponse('university_register_failed')
     return response
 
 def UpdateUniversity(req_data):
