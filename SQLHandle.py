@@ -3,7 +3,7 @@
 *   Module Purpose: To handle all functions related to the DB
 """
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, inspect
 from ConfigHandle import Config
 from LogHandle import Logger, LogLevel
 
@@ -65,6 +65,8 @@ class Class(db.Model):
         self.tutor_id = tutor_id
         self.uni_id = uni_id
 
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 class tutor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -86,6 +88,9 @@ class tutor(db.Model):
         self.email = email
         self.uni_id = uni_id
 
+    def dict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
+
 
 class reward(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -104,6 +109,9 @@ class reward(db.Model):
         self.type = type
         self.tier = tier
         self.desc = desc
+
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 
 class coupon(db.Model):
@@ -124,6 +132,8 @@ class coupon(db.Model):
         self.point_cost = point_cost
         self.vendor_id = vendor_id
 
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 class vendor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -141,6 +151,9 @@ class vendor(db.Model):
         self.type = type
         self.email = email
 
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
+
 
 class redemption(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -153,6 +166,9 @@ class redemption(db.Model):
         self.date = date
         self.student_id = student_id
         self.coupon_id = coupon_id
+
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 
 class point(db.Model):
@@ -168,6 +184,9 @@ class point(db.Model):
         self.tutor_id = tutor_id
         self.date = date
 
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
+
 
 class university(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -182,6 +201,9 @@ class university(db.Model):
         self.name = name
         self.address = address
         self.mobile_no = mobile_no
+
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 
 class student(db.Model):
@@ -209,17 +231,22 @@ class student(db.Model):
         self.auth_status = auth_status
         self.uni_id = uni_id
 
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
+
 
 class enrolled(db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('class.id'), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     EN_DATE = db.Column(db.DateTime)
 
-
     def __init__(self, class_id, student_id, date):
         self.class_id = class_id
         self.student_id = student_id
         self.date = date
+
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
 
 
 class beacon(db.Model):
@@ -236,3 +263,6 @@ class beacon(db.Model):
         self.longitude = longitude
         self.latitude = latitude
         self.datetime = datetime
+
+    def todict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
