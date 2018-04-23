@@ -169,7 +169,7 @@ class point(db.Model):
 
 class university(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    uni_code = db.Column(db.Text, unique=True)
+    uni_code = db.Column(db.Text)
     name = db.Column(db.Text)
     address = db.Column(db.Text)
     mobile_no = db.Column(db.Text)
