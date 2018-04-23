@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c7289b5-d3d0-4531-a6f5-2da314e60760" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CouponHandle.py" afterPath="$PROJECT_DIR$/CouponHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoginHandle.py" afterPath="$PROJECT_DIR$/LoginHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PointHandle.py" afterPath="$PROJECT_DIR$/PointHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RegistrationHandle.py" afterPath="$PROJECT_DIR$/RegistrationHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ResponseHandle.py" afterPath="$PROJECT_DIR$/ResponseHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLHandle.py" afterPath="$PROJECT_DIR$/SQLHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UniversityHandle.py" afterPath="$PROJECT_DIR$/UniversityHandle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.py" afterPath="$PROJECT_DIR$/Uniwards-Backend.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VendorHandle.py" afterPath="$PROJECT_DIR$/VendorHandle.py" />
     </list>
     <ignored path="Uniwards-Backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +29,8 @@
       <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-638">
-              <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
+            <state relative-caret-position="229">
+              <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -145,10 +137,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="683" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -438,7 +428,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="0" y="0" width="683" height="728" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -893,8 +883,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
+        <state relative-caret-position="229">
+          <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>

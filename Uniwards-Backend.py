@@ -93,12 +93,12 @@ def GetRewardByID(reward_id):
     return response[0], response[1]
 
 @app.route('/api/getrewardsbytier/<tier>')
-def GetCouponByVendor(tier):
+def GetRewardsByTier(tier):
     response = RewardHandle.GetRewardsByTier(tier)
     return response[0], response[1]
 
 @app.route('/api/getrewards')
-def GetRwards():
+def GetRewards():
     response = RewardHandle.GetRewards()
     return response[0], response[1]
 
@@ -113,7 +113,7 @@ def GetPointsByTutorID(tutor_id):
     return response[0], response[1]
 
 @app.route('/api/getpointsbyrewardid/<reward_id>')
-def GetPointsByTutorID(reward_id):
+def GetPointsByRewardID(reward_id):
     response = PointHandle.GetPointsByRewardID(reward_id)
     return response[0], response[1]
 
@@ -138,12 +138,12 @@ def GetRedemptionByID(redemption_id):
     return response[0], response[1]
 
 @app.route('/api/getredemptionsbystudentid/<student_id>')
-def GetRedemptionsByCouponId(student_id):
+def GetRedemptionsByStudentID(student_id):
     response = RedemptionHandle.GetRedemptionsByStudentID(student_id)
     return response[0], response[1]
 
 @app.route('/api/getredemptionsbycouponid/<coupon_id>')
-def GetRedemptionsByCouponId(coupon_id):
+def GetRedemptionsByCouponID(coupon_id):
     response = RedemptionHandle.GetRedemptionsByCouponID(coupon_id)
     return response[0], response[1]
 
@@ -157,8 +157,8 @@ def GetEnrolmentsByStudentID(student_id):
     response = EnrolmentHandle.GetEnrolmentsByStudentID(student_id)
     return response[0], response[1]
 
-@app.route('/api/getredemptionsbycouponid/<coupon_id>')
-def GetEnrolmentsByClassID(class_id):
+@app.route('/api/getenrolmentsbyclassid/<class_id>')
+def GetEnrolmentByClassID(class_id):
     response = EnrolmentHandle.GetEnrolmentsByClassID(class_id)
     return response[0], response[1]
 
