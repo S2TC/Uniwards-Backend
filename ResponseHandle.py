@@ -70,7 +70,14 @@ responses = {"register_success": (200, "0"),
              "enrollment_update_failed": (200, "3"),
              "enrollment_register_success": (200, "4"),
              "enrollment_delete_success": (200, "5"),
-             "enrollment_update_success": (200, "6")}
+             "enrollment_update_success": (200, "6"),
+             "uniclass_get_failed": (200, "0"),
+             "uniclass_register_failed": (200, "1"),
+             "uniclass_delete_failed": (200, "2"),
+             "uniclass_update_failed": (200, "3"),
+             "uniclass_register_success": (200, "4"),
+             "uniclass_delete_success": (200, "5"),
+             "uniclass_update_success": (200, "6")}
 
 
 #Return json containing response message + HTML response code
@@ -120,5 +127,11 @@ def GenerateRedemptionResponse(redemption):
 def GenerateEnrolmentsResponse(enrolments):
     return [jsonify(enrolments=enrolments), 200]
 
-def GenerateEnrolmentResponse(enrolments):
-    return [jsonify(enrolments=enrolments), 200]
+def GenerateEnrolmentResponse(enrolment):
+    return [jsonify(enrolment=enrolment), 200]
+
+def GenerateUniclassesResponse(classes):
+    return [jsonify(classes=classes), 200]
+
+def GenerateUniclassResponse(uniclass):
+    return [jsonify(uniclass=uniclass), 200]

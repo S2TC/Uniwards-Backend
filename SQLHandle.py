@@ -55,7 +55,7 @@ def CommitSession():
 def GetListOfRows(query_result):
     return [row.todict() for row in query_result]
 
-class Class(db.Model):
+class Uniclass(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'))
@@ -190,11 +190,11 @@ class student(db.Model):
     fname = db.Column(db.Text)
     lname = db.Column(db.Text)
     mobile_no = db.Column(db.Text)
-    username = db.Column(db.Text, unique=True)
+    username = db.Column(db.Text)
     password = db.Column(db.Text)
     birth = db.Column(db.DateTime)
     type = db.Column(db.Integer)
-    email = db.Column(db.Text, unique=True)
+    email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
@@ -215,12 +215,12 @@ class student(db.Model):
 
 
 class enrolled(db.Model):
-    class_id = db.Column(db.Integer, db.ForeignKey('class.id'), primary_key=True)
+    uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     en_date = db.Column(db.DateTime)
 
-    def __init__(self, class_id, student_id, date):
-        self.class_id = class_id
+    def __init__(self, uniclass_id, student_id, date):
+        self.uniclass_id = uniclass_id
         self.student_id = student_id
         self.en_date = date
 
@@ -230,15 +230,15 @@ class enrolled(db.Model):
 
 class beacon(db.Model):
     tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    class_id = db.Column(db.Integer, db.ForeignKey('class.id'), primary_key=True)
+    uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     longitude = db.Column(db.Integer)
     latitude = db.Column(db.Integer)
     datetime = db.Column(db.DateTime)
 
 
-    def __init__(self, tutor_id, class_id, longitude, latitude, datetime):
+    def __init__(self, tutor_id, uniclass_id, longitude, latitude, datetime):
         self.tutor_id = tutor_id
-        self.class_id = class_id
+        self.uniclass_id = uniclass_id
         self.longitude = longitude
         self.latitude = latitude
         self.datetime = datetime

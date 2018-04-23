@@ -1,7 +1,7 @@
 from flask import Flask, request
 from ConfigHandle import Config
 import SQLHandle, RegistrationHandle, LoginHandle, ResponseHandle, UniversityHandle, CouponHandle, RewardHandle
-import PointHandle, RedemptionHandle, VendorHandle, EnrolmentHandle
+import PointHandle, RedemptionHandle, VendorHandle, EnrolmentHandle, UniclassHandle
 from LogHandle import Logger, LogLevel
 
 app = Flask(__name__)
@@ -166,6 +166,21 @@ def GetEnrolmentByClassID(class_id):
 def GetEnrolments():
     response = EnrolmentHandle.GetEnrolments()
     return response[0], response[1]
+
+@app.route('/api/getuniclassbyname/<name>')
+def GetUniclassesByName(name):
+    response = UniclassHandle.GetUniclassByName(name)
+    return response[0], response[1]
+
+@app.route('/api/getuniclassesbytutorid/<tutor_id>')
+def GetUniclassesByTutorID(tutor_id):
+    response = UniclassHandle.GetUniclassesByTutorID(tutor_id)
+    return response[0], response[1]
+
+@app.route('/api/getuniclassesbyunid')
+def GetUniclassesByUniID(uni_id):
+    response = UniclassHandle.GetUniclassesByUniID(uni_id)
+    return response[0], response[1]
 '''-------------------------------------------------------'''
 
 
@@ -204,6 +219,11 @@ def CreateRedemption():
 @app.route('/api/newenrolment', methods = ['POST'])
 def CreateEnrolment():
     response = EnrolmentHandle.RegisterRedemption(request.form)
+    return response[0], response[1]
+
+@app.route('/api/newuniclass', methods = ['POST'])
+def CreateEnrolment():
+    response = UniclassHandle.RegisterUniclass(request.form)
     return response[0], response[1]
 '''-------------------------------------------------------'''
 
