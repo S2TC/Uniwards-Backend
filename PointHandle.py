@@ -38,7 +38,7 @@ def GetPointsByRewardID(reward_id):
     return response
 
 
-def RegisterPoint(req_data):
+def CreatePoint(req_data):
     temp_point = SQLHandle.point(student_id=req_data['student_id'], reward_id=req_data['reward_id'],
                                            tutor_id=req_data['tutor_id'], date=req_data['date'])
     if(SQLHandle.InsertRowObject(temp_point)):

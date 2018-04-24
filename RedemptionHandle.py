@@ -50,8 +50,8 @@ def GetRedemptions():
     return response
 
 
-def RegisterRedemption(req_data):
-    temp_redemption = SQLHandle.redemption(date=req_data['date'], student_id=req_data['code'],
+def CreateRedemption(req_data):
+    temp_redemption = SQLHandle.redemption(date=req_data['date'], student_id=req_data['student_id'],
                                            coupon_id=req_data['coupon_id'])
     if(SQLHandle.InsertRowObject(temp_redemption)):
         response = ResponseHandle.GenerateResponse('redemption_register_success')

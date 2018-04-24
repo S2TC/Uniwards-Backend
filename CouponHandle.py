@@ -34,7 +34,7 @@ def GetCoupons():
     return response
 
 
-def RegisterCoupon(req_data):
+def CreateCoupon(req_data):
     temp_coupon = SQLHandle.coupon(name=req_data['name'], code=req_data['code'],
                                            expiry=req_data['expiry'], desc=req_data['desc'],
                                            point_cost=req_data['point_cost'], vendor_id=req_data['vendor_id'])

@@ -55,7 +55,7 @@ def CommitSession():
 def GetListOfRows(query_result):
     return [row.todict() for row in query_result]
 
-class Uniclass(db.Model):
+class uniclass(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'))

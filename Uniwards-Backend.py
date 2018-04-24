@@ -193,17 +193,17 @@ def CreateUniversity():
 
 @app.route('/api/newcoupon', methods = ['POST'])
 def CreateCoupon():
-    response = CouponHandle.RegisterCoupon(request.form)
+    response = CouponHandle.CreateCoupon(request.form)
     return response[0], response[1]
 
 @app.route('/api/newreward', methods = ['POST'])
 def CreateReward():
-    response = RewardHandle.RegisterReward(request.form)
+    response = RewardHandle.CreateReward(request.form)
     return response[0], response[1]
 
 @app.route('/api/newpoint', methods = ['POST'])
 def CreatePoint():
-    response = PointHandle.RegisterPoint(request.form)
+    response = PointHandle.CreatePoint(request.form)
     return response[0], response[1]
 
 @app.route('/api/newvendor', methods = ['POST'])
@@ -213,12 +213,12 @@ def CreateVendor():
 
 @app.route('/api/newredemption', methods = ['POST'])
 def CreateRedemption():
-    response = RedemptionHandle.RegisterRedemption(request.form)
+    response = RedemptionHandle.CreateRedemption(request.form)
     return response[0], response[1]
 
 @app.route('/api/newenrolment', methods = ['POST'])
 def CreateEnrolment():
-    response = EnrolmentHandle.RegisterRedemption(request.form)
+    response = EnrolmentHandle.CreateEnrolment(request.form)
     return response[0], response[1]
 
 @app.route('/api/newuniclass', methods = ['POST'])

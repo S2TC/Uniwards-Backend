@@ -36,10 +36,10 @@ def GetRewardsByTier(tier):
     return response
 
 
-def RegisterReward(req_data):
+def CreateReward(req_data):
     temp_reward = SQLHandle.reward(name=req_data['name'], value=req_data['value'],
                                            requirement=req_data['requirement'],
-                                           type=req_data['point_cost'], tier=req_data['vendor_id'], desc=req_data['desc'])
+                                           type=req_data['type'], tier=req_data['tier'], desc=req_data['desc'])
     if(SQLHandle.InsertRowObject(temp_reward)):
         response = ResponseHandle.GenerateResponse('reward_register_success')
     else:
