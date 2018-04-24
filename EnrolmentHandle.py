@@ -14,8 +14,8 @@ def GetEnrolmentsByStudentID(student_id):
     return response
 
 
-def GetEnrolmentsByClassID(class_id):
-    temp_enrolments = SQLHandle.enrolled.query.filter_by(class_id=class_id)
+def GetEnrolmentsByClassID(uniclass_id):
+    temp_enrolments = SQLHandle.enrolled.query.filter_by(uniclass_id=uniclass_id)
     enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
     if (enrolment_list is not None):
         if(len(enrolment_list) > 0):
