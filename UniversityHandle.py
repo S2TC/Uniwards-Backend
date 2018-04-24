@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetUniversity(uni_code):
     temp_university = SQLHandle.university.query.filter_by(uni_code=uni_code).first()
     if(temp_university is not None):
-        response = ResponseHandle.GenerateUniversityResponse(temp_university)
+        response = ResponseHandle.GenerateUniversityResponse(temp_university.todict())
     else:
         response = ResponseHandle.GenerateResponse('university_get_failed')
     return response

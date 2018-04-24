@@ -68,20 +68,30 @@ def GenerateEmailAuth(email):
 
 def DecryptEmailAuth(token):
     serializer = URLSafeSerializer(app.config['SECRET_KEY'])
-    return serializer.loads(token, salt=app.config['SECURITY_PASSWORD_SALT'])
+    try:
+        value = serializer.loads(token, salt=app.config['SECURITY_PASSWORD_SALT'])
+    except:
+        value = None
+
+    return value
 
 def VerifyStudentEmailAuth(token):
     email = DecryptEmailAuth(token)
-    temp_student = SQLHandle.student.query.filter_by(email=email).first()
-    if(temp_student is not None):
-        if(temp_student.auth_status is 0):
-            temp_student.auth_status = 1
-            SQLHandle.CommitSession()
-            return True
+    if(email is not None):
+        temp_student = SQLHandle.student.query.filter_by(email=email).first()
+        if(temp_student is not None):
+            if(temp_student.auth_status is 0):
+                temp_student.auth_status = 1
+                SQLHandle.CommitSession()
+                result = True
+            else:
+                result = False
         else:
-            return False
+            result = False
     else:
-        return False
+        result = False
+
+    return result
 
 def SendAuthEmail(email, auth_token):
     url_str = "uniwards.xyz/api/auth_user/%s" % (auth_token)

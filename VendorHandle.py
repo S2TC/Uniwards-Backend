@@ -1,9 +1,9 @@
 import ResponseHandle, SQLHandle
 
 def GetVendorByID(vendor_id):
-    temp_vendor = SQLHandle.vendor.query.filter_by(vendor_id=vendor_id).first()
+    temp_vendor = SQLHandle.vendor.query.filter_by(id=vendor_id).first()
     if(temp_vendor is not None):
-        response = ResponseHandle.GenerateVendorResponse(temp_vendor)
+        response = ResponseHandle.GenerateVendorResponse(temp_vendor.todict())
     else:
         response = ResponseHandle.GenerateResponse('vendor_get_failed')
     return response

@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetRedemptionByID(redemption_id):
     temp_redemption = SQLHandle.redemption.query.filter_by(id=redemption_id).first()
     if(temp_redemption is not None):
-        response = ResponseHandle.GenerateRedemptionResponse(temp_redemption)
+        response = ResponseHandle.GenerateRedemptionResponse(temp_redemption.todict())
     else:
         response = ResponseHandle.GenerateResponse('redemption_get_failed')
     return response

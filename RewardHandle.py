@@ -1,9 +1,9 @@
 import ResponseHandle, SQLHandle
 
 def GetRewardByID(reward_id):
-    temp_reward = SQLHandle.reward.query.filter_by(reward_id=reward_id).first()
+    temp_reward = SQLHandle.reward.query.filter_by(id=reward_id).first()
     if(temp_reward is not None):
-        response = ResponseHandle.GenerateRewardResponse(temp_reward)
+        response = ResponseHandle.GenerateRewardResponse(temp_reward.todict())
     else:
         response = ResponseHandle.GenerateResponse('reward_get_failed')
     return response

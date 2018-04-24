@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetUniclassByName(name):
     temp_uniclass = SQLHandle.uniclass.query.filter_by(name=name).first()
     if(temp_uniclass is not None):
-        response = ResponseHandle.GenerateUniclassResponse(temp_uniclass)
+        response = ResponseHandle.GenerateUniclassResponse(temp_uniclass.todict())
     else:
         response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     return response

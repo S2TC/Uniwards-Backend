@@ -43,7 +43,7 @@ def GetEnrolments():
 
 
 def CreateEnrolment(req_data):
-    temp_enrolment = SQLHandle.enrolled(uniclass_id=req_data['class_id'], student_id=req_data['code'],
+    temp_enrolment = SQLHandle.enrolled(uniclass_id=req_data['uniclass_id'], student_id=req_data['student_id'],
                                          date=req_data['date'])
     if(SQLHandle.InsertRowObject(temp_enrolment)):
         response = ResponseHandle.GenerateResponse('enrolment_register_success')
