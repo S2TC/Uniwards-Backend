@@ -26,7 +26,7 @@ def GetCoupons():
     if (coupon_list is not None):
         if(len(coupon_list) > 0):
             #if(start < len(coupon_list) and end < len(coupon_list)):
-            response = ResponseHandle.GenerateUCouponsResponse("coupon_get_success", coupon_list)
+            response = ResponseHandle.GenerateCouponsResponse("coupon_get_success", coupon_list)
         else:
             response = ResponseHandle.GenerateResponse('coupon_get_failed')
     else:
