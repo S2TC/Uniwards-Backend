@@ -36,7 +36,7 @@ def GetCoupons():
 
 
 def CreateCoupon(req_data):
-    parsed_date = datetime.strptime(req_data['expiry'], 'dd/mm/yyyy')
+    parsed_date = datetime.strptime(req_date['expiry'], "%m/%d/%Y").strftime('%m/%d/%Y')
     temp_coupon = SQLHandle.coupon(name=req_data['name'], code=req_data['code'],
                                            expiry=parsed_date, desc=req_data['desc'],
                                            point_cost=req_data['point_cost'], vendor_id=req_data['vendor_id'])

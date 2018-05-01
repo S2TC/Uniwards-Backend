@@ -1,5 +1,5 @@
 import ResponseHandle, SQLHandle
-from dateutil import parser
+from datetime import datetime
 
 def GetRedemptionByID(redemption_id):
     temp_redemption = SQLHandle.redemption.query.filter_by(id=redemption_id).first()
@@ -52,7 +52,7 @@ def GetRedemptions():
 
 
 def CreateRedemption(req_data):
-    parsed_date = parser.parse(req_data['date'])
+    parsed_date = datetime.strptime(req_date['date'], "%m/%d/%Y").strftime('%m/%d/%Y')
     temp_redemption = SQLHandle.redemption(date=parsed_date, student_id=req_data['student_id'],
                                            coupon_id=req_data['coupon_id'])
     if(SQLHandle.InsertRowObject(temp_redemption)):
