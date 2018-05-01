@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetRedemptionByID(redemption_id):
     temp_redemption = SQLHandle.redemption.query.filter_by(id=redemption_id).first()
     if(temp_redemption is not None):
-        response = ResponseHandle.GenerateRedemptionResponse(temp_redemption.todict())
+        response = ResponseHandle.GenerateRedemptionResponse("redemption_get_success", temp_redemption.todict())
     else:
         response = ResponseHandle.GenerateResponse('redemption_get_failed')
     return response
@@ -13,7 +13,7 @@ def GetRedemptionsByStudentID(student_id):
     redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
     if (redemption_list is not None):
         if(len(redemption_list) > 0):
-            response = ResponseHandle.GenerateRedemptionsResponse(redemption_list)
+            response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
         else:
             response = ResponseHandle.GenerateResponse('redemption_get_failed')
     else:
@@ -27,7 +27,7 @@ def GetRedemptionsByCouponID(coupon_id):
     redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
     if (redemption_list is not None):
         if(len(redemption_list) > 0):
-            response = ResponseHandle.GenerateRedemptionsResponse(redemption_list)
+            response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
         else:
             response = ResponseHandle.GenerateResponse('redemption_get_failed')
     else:
@@ -41,7 +41,7 @@ def GetRedemptions():
     redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
     if (redemption_list is not None):
         if(len(redemption_list) > 0):
-            response = ResponseHandle.GenerateRedemptionsResponse(redemption_list)
+            response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
         else:
             response = ResponseHandle.GenerateResponse('redemption_get_failed')
     else:

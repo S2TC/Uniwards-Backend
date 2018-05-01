@@ -5,7 +5,7 @@ def GetEnrolmentsByStudentID(student_id):
     enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
     if (enrolment_list is not None):
         if(len(enrolment_list) > 0):
-            response = ResponseHandle.GenerateEnrolmentsResponse(enrolment_list)
+            response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
         else:
             response = ResponseHandle.GenerateResponse('enrolment_get_failed')
     else:
@@ -19,7 +19,7 @@ def GetEnrolmentsByClassID(uniclass_id):
     enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
     if (enrolment_list is not None):
         if(len(enrolment_list) > 0):
-            response = ResponseHandle.GenerateEnrolmentsResponse(enrolment_list)
+            response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
         else:
             response = ResponseHandle.GenerateResponse('enrolment_get_failed')
     else:
@@ -33,7 +33,7 @@ def GetEnrolments():
     enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
     if (enrolment_list is not None):
         if(len(enrolment_list) > 0):
-            response = ResponseHandle.GenerateEnrolmentsResponse(enrolment_list)
+            response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
         else:
             response = ResponseHandle.GenerateResponse('enrolment_get_failed')
     else:

@@ -26,58 +26,66 @@ responses = {"register_success": (200, "0"),
              "university_register_failed": (200, "1"),
              "university_delete_failed": (200, "2"),
              "university_update_failed": (200, "3"),
-             "university_register_success": (200, "4"),
-             "university_delete_success": (200, "5"),
-             "university_update_success": (200, "6"),
+             "university_get_success": (200, "4"),
+             "university_register_success": (200, "5"),
+             "university_delete_success": (200, "6"),
+             "university_update_success": (200, "7"),
              "coupon_get_failed": (200, "0"),
              "coupon_register_failed": (200, "1"),
              "coupon_delete_failed": (200, "2"),
              "coupon_update_failed": (200, "3"),
-             "coupon_register_success": (200, "4"),
-             "coupon_delete_success": (200, "5"),
-             "coupon_update_success": (200, "6"),
+             "coupon_get_success": (200, "4"),
+             "coupon_register_success": (200, "5"),
+             "coupon_delete_success": (200, "6"),
+             "coupon_update_success": (200, "7"),
              "reward_get_failed": (200, "0"),
              "reward_register_failed": (200, "1"),
              "reward_delete_failed": (200, "2"),
              "reward_update_failed": (200, "3"),
-             "reward_register_success": (200, "4"),
-             "reward_delete_success": (200, "5"),
-             "reward_update_success": (200, "6"),
+             "reward_get_success": (200, "4"),
+             "reward_register_success": (200, "5"),
+             "reward_delete_success": (200, "6"),
+             "reward_update_success": (200, "7"),
              "point_get_failed": (200, "0"),
              "point_register_failed": (200, "1"),
              "point_delete_failed": (200, "2"),
              "point_update_failed": (200, "3"),
-             "point_register_success": (200, "4"),
-             "point_delete_success": (200, "5"),
-             "point_update_success": (200, "6"),
+             "point_get_success": (200, "4"),
+             "point_register_success": (200, "5"),
+             "point_delete_success": (200, "6"),
+             "point_update_success": (200, "7"),
              "vendor_get_failed": (200, "0"),
              "vendor_register_failed": (200, "1"),
              "vendor_delete_failed": (200, "2"),
              "vendor_update_failed": (200, "3"),
-             "vendor_register_success": (200, "4"),
-             "vendor_delete_success": (200, "5"),
-             "vendor_update_success": (200, "6"),
+             "vendor_get_success": (200, "4"),
+             "vendor_register_success": (200, "5"),
+             "vendor_delete_success": (200, "6"),
+             "vendor_update_success": (200, "7"),
              "redemption_get_failed": (200, "0"),
              "redemption_register_failed": (200, "1"),
              "redemption_delete_failed": (200, "2"),
              "redemption_update_failed": (200, "3"),
-             "redemption_register_success": (200, "4"),
-             "redemption_delete_success": (200, "5"),
-             "redemption_update_success": (200, "6"),
+             "redemption_get_success": (200, "4"),
+             "redemption_register_success": (200, "5"),
+             "redemption_delete_success": (200, "6"),
+             "redemption_update_success": (200, "7"),
              "enrolment_get_failed": (200, "0"),
              "enrolment_register_failed": (200, "1"),
              "enrolment_delete_failed": (200, "2"),
              "enrolment_update_failed": (200, "3"),
-             "enrolment_register_success": (200, "4"),
-             "enrolment_delete_success": (200, "5"),
-             "enrolment_update_success": (200, "6"),
+             "enrolment_get_success": (200, "4"),
+             "enrolment_register_success": (200, "5"),
+             "enrolment_delete_success": (200, "6"),
+             "enrolment_update_success": (200, "7"),
              "uniclass_get_failed": (200, "0"),
              "uniclass_register_failed": (200, "1"),
              "uniclass_delete_failed": (200, "2"),
              "uniclass_update_failed": (200, "3"),
-             "uniclass_register_success": (200, "4"),
-             "uniclass_delete_success": (200, "5"),
-             "uniclass_update_success": (200, "6")}
+             "uniclass_get_success": (200, "4"),
+             "uniclass_register_success": (200, "5"),
+             "uniclass_delete_success": (200, "6"),
+             "uniclass_update_success": (200, "7")}
 
 
 #Return json containing response message + HTML response code
@@ -88,50 +96,50 @@ def GenerateResponse(response_type):
 def GenerateTokenResponse(response_type, raw_token):
     return [jsonify(response_message=responses[response_type][1], user_token=raw_token), responses[response_type][0]]
 
-def GenerateUniversitiesResponse(universities):
-    return [jsonify(universities=universities), 200]
+def GenerateUniversitiesResponse(response_type, universities):
+    return [jsonify(response_message=responses[response_type][1], universities=universities), responses[response_type][0]]
 
-def GenerateUniversityResponse(university):
-    return [jsonify(university=university), 200]
+def GenerateUniversityResponse(response_type, university):
+    return [jsonify(response_message=responses[response_type][1], university=university), responses[response_type][0]]
 
-def GenerateCouponsResponse(coupons):
-    return [jsonify(coupons=coupons), 200]
+def GenerateCouponsResponse(response_type, coupons):
+    return [jsonify(response_message=responses[response_type][1], coupons=coupons), responses[response_type][0]]
 
-def GenerateCouponResponse(coupon):
-    return [jsonify(coupon=coupon), 200]
+def GenerateCouponResponse(response_type, coupon):
+    return [jsonify(response_message=responses[response_type][1], coupon=coupon), responses[response_type][0]]
 
-def GenerateRewardsResponse(rewards):
-    return [jsonify(rewards=rewards), 200]
+def GenerateRewardsResponse(response_type, rewards):
+    return [jsonify(response_message=responses[response_type][1], rewards=rewards), responses[response_type][0]]
 
-def GenerateRewardResponse(reward):
-    return [jsonify(reward=reward), 200]
+def GenerateRewardResponse(response_type, reward):
+    return [jsonify(response_message=responses[response_type][1], reward=reward), responses[response_type][0]]
 
-def GeneratePointsResponse(points):
-    return [jsonify(coupons=points), 200]
+def GeneratePointsResponse(response_type, points):
+    return [jsonify(response_message=responses[response_type][1], points=points), responses[response_type][0]]
 
-def GeneratePointResponse(point):
-    return [jsonify(point=point), 200]
+def GeneratePointResponse(response_type, point):
+    return [jsonify(response_message=responses[response_type][1], point=point), responses[response_type][0]]
 
-def GenerateVendorsResponse(vendors):
-    return [jsonify(vendors=vendors), 200]
+def GenerateVendorsResponse(response_type, vendors):
+    return [jsonify(response_message=responses[response_type][1], vendors=vendors), responses[response_type][0]]
 
-def GenerateVendorResponse(vendor):
-    return [jsonify(vendor=vendor), 200]
+def GenerateVendorResponse(response_type, vendor):
+    return [jsonify(response_message=responses[response_type][1], vendor=vendor), responses[response_type][0]]
 
-def GenerateRedemptionsResponse(redemption):
-    return [jsonify(redemption=redemption), 200]
+def GenerateRedemptionsResponse(response_type, redemptions):
+    return [jsonify(response_message=responses[response_type][1], redemptions=redemptions), responses[response_type][0]]
 
-def GenerateRedemptionResponse(redemption):
-    return [jsonify(Redemption=redemption), 200]
+def GenerateRedemptionResponse(response_type, redemption):
+    return [jsonify(response_message=responses[response_type][1], redemption=redemption), responses[response_type][0]]
 
-def GenerateEnrolmentsResponse(enrolments):
-    return [jsonify(enrolments=enrolments), 200]
+def GenerateEnrolmentsResponse(response_type, enrolments):
+    return [jsonify(response_message=responses[response_type][1], enrolments=enrolments), responses[response_type][0]]
 
-def GenerateEnrolmentResponse(enrolment):
-    return [jsonify(enrolment=enrolment), 200]
+def GenerateEnrolmentResponse(response_type, enrolment):
+    return [jsonify(response_message=responses[response_type][1], enrolment=enrolment), responses[response_type][0]]
 
-def GenerateUniclassesResponse(classes):
-    return [jsonify(classes=classes), 200]
+def GenerateUniclassesResponse(response_type, uniclasses):
+    return [jsonify(response_message=responses[response_type][1], uniclasses=uniclasses), responses[response_type][0]]
 
-def GenerateUniclassResponse(uniclass):
-    return [jsonify(uniclass=uniclass), 200]
+def GenerateUniclassResponse(reponse_type, uniclass):
+    return [jsonify(response_message=responses[response_type][1], uniclass=uniclass), responses[response_type][0]]

@@ -4,7 +4,7 @@ def GetPointsByStudentID(student_id):
     temp_points = SQLHandle.point.query.filter_by(student_id=student_id)
     point_list = SQLHandle.GetListOfRows(temp_points)
     if(len(point_list) > 0):
-        response = ResponseHandle.GeneratePointsResponse(point_list)
+        response = ResponseHandle.GeneratePointsResponse("point_get_success", point_list)
     else:
         response = ResponseHandle.GenerateResponse('point_get_failed')
 
@@ -15,7 +15,7 @@ def GetPointsByTutorID(tutor_id):
     point_list = SQLHandle.GetListOfRows(temp_points)
     if (point_list is not None):
         if(len(point_list) > 0):
-            response = ResponseHandle.GeneratePointsResponse(point_list)
+            response = ResponseHandle.GeneratePointsResponse("point_get_success", point_list)
         else:
             response = ResponseHandle.GenerateResponse('point_get_failed')
     else:
@@ -29,7 +29,7 @@ def GetPointsByRewardID(reward_id):
     point_list = SQLHandle.GetListOfRows(temp_points)
     if(point_list is not None):
         if(len(point_list) > 0):
-            response = ResponseHandle.GeneratePointsResponse(point_list)
+            response = ResponseHandle.GeneratePointsResponse("point_get_success", point_list)
         else:
             response = ResponseHandle.GenerateResponse('point_get_failed')
     else:

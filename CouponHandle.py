@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetCouponByID(coupon_id):
     temp_coupon = SQLHandle.coupon.query.filter_by(id=coupon_id).first()
     if(temp_coupon is not None):
-        response = ResponseHandle.GenerateCouponResponse(temp_coupon.todict())
+        response = ResponseHandle.GenerateCouponResponse("coupon_get_success", temp_coupon.todict())
     else:
         response = ResponseHandle.GenerateResponse('coupon_get_failed')
     return response
@@ -12,7 +12,7 @@ def GetCouponByID(coupon_id):
 def GetCouponByVendor(vendor_id):
     temp_coupon = SQLHandle.coupon.query.filter_by(vendor_id=vendor_id).first()
     if(temp_coupon is not None):
-        response = ResponseHandle.GenerateCouponResponse(temp_coupon.todict())
+        response = ResponseHandle.GenerateCouponResponse("coupon_get_success", temp_coupon.todict())
     else:
         response = ResponseHandle.GenerateResponse('coupon_get_failed')
 
@@ -25,7 +25,7 @@ def GetCoupons():
     if (coupon_list is not None):
         if(len(coupon_list) > 0):
             #if(start < len(coupon_list) and end < len(coupon_list)):
-            response = ResponseHandle.GenerateUCouponsResponse(coupon_list)
+            response = ResponseHandle.GenerateUCouponsResponse("coupon_get_success", coupon_list)
         else:
             response = ResponseHandle.GenerateResponse('coupon_get_failed')
     else:

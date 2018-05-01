@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetRewardByID(reward_id):
     temp_reward = SQLHandle.reward.query.filter_by(id=reward_id).first()
     if(temp_reward is not None):
-        response = ResponseHandle.GenerateRewardResponse(temp_reward.todict())
+        response = ResponseHandle.GenerateRewardResponse("reward_get_success", temp_reward.todict())
     else:
         response = ResponseHandle.GenerateResponse('reward_get_failed')
     return response
@@ -14,7 +14,7 @@ def GetRewards():
     reward_list = SQLHandle.GetListOfRows(temp_rewards)
     if(reward_list is not None):
         if(len(reward_list) > 0):
-            response = ResponseHandle.GenerateRewardsResponse(reward_list)
+            response = ResponseHandle.GenerateRewardsResponse("reward_get_success", reward_list)
         else:
             response = ResponseHandle.GenerateResponse('reward_get_failed')
     else:
@@ -27,7 +27,7 @@ def GetRewardsByTier(tier):
     reward_list = SQLHandle.GetListOfRows(temp_rewards)
     if(reward_list is not None):
         if(len(reward_list) > 0):
-            response = ResponseHandle.GenerateRewardsResponse(reward_list)
+            response = ResponseHandle.GenerateRewardsResponse("reward_get_success", reward_list)
         else:
             response = ResponseHandle.GenerateResponse('reward_get_failed')
     else:

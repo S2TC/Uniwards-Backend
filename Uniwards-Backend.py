@@ -152,7 +152,7 @@ def GetRedemptions():
     response = RedemptionHandle.GetRedemptions()
     return response[0], response[1]
 
-@app.route('/api/getenrolmentssbystudentid/<student_id>')
+@app.route('/api/getenrolmentsbystudentid/<student_id>')
 def GetEnrolmentsByStudentID(student_id):
     response = EnrolmentHandle.GetEnrolmentsByStudentID(student_id)
     return response[0], response[1]
@@ -177,7 +177,7 @@ def GetUniclassesByTutorID(tutor_id):
     response = UniclassHandle.GetUniclassesByTutorID(tutor_id)
     return response[0], response[1]
 
-@app.route('/api/getuniclassesbyunid')
+@app.route('/api/getuniclassesbyunid/<uni_id>')
 def GetUniclassesByUniID(uni_id):
     response = UniclassHandle.GetUniclassesByUniID(uni_id)
     return response[0], response[1]

@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetVendorByID(vendor_id):
     temp_vendor = SQLHandle.vendor.query.filter_by(id=vendor_id).first()
     if(temp_vendor is not None):
-        response = ResponseHandle.GenerateVendorResponse(temp_vendor.todict())
+        response = ResponseHandle.GenerateVendorResponse("vendor_get_success", temp_vendor.todict())
     else:
         response = ResponseHandle.GenerateResponse('vendor_get_failed')
     return response
@@ -15,7 +15,7 @@ def GetVendors():
     vendor_list = SQLHandle.GetListOfRows(temp_vendors)
     if (vendor_list is not None):
         if(len(vendor_list) > 0):
-            response = ResponseHandle.GenerateVendorsResponse(vendor_list)
+            response = ResponseHandle.GenerateVendorsResponse("vendor_get_success", vendor_list)
         else:
             response = ResponseHandle.GenerateResponse('vendor_get_failed')
     else:
@@ -29,7 +29,7 @@ def GetVendorsByType(type):
     vendor_list = SQLHandle.GetListOfRows(temp_vendors)
     if (vendor_list is not None):
         if(len(vendor_list) > 0):
-            response = ResponseHandle.GenerateVendorsResponse(vendor_list)
+            response = ResponseHandle.GenerateVendorsResponse("vendor_get_success", vendor_list)
         else:
             response = ResponseHandle.GenerateResponse('vendor_get_failed')
     else:

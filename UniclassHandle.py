@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetUniclassByName(name):
     temp_uniclass = SQLHandle.uniclass.query.filter_by(name=name).first()
     if(temp_uniclass is not None):
-        response = ResponseHandle.GenerateUniclassResponse(temp_uniclass.todict())
+        response = ResponseHandle.GenerateUniclassResponse("uniclass_get_success", temp_uniclass.todict())
     else:
         response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     return response
@@ -15,7 +15,7 @@ def GetUniclasses():
     uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
     if (uniclass_list is not None):
         if(len(uniclass_list) > 0):
-            response = ResponseHandle.GenerateUniclassesResponse(uniclass_list)
+            response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
         else:
             response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     else:
@@ -29,7 +29,7 @@ def GetUniclassesByTutorID(tutor_id):
     uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
     if (uniclass_list is not None):
         if(len(uniclass_list) > 0):
-            response = ResponseHandle.GenerateUniclassesResponse(uniclass_list)
+            response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
         else:
             response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     else:
@@ -42,7 +42,7 @@ def GetUniclassesByUniID(uni_id):
     uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
     if (uniclass_list is not None):
         if(len(uniclass_list) > 0):
-            response = ResponseHandle.GenerateUniclassesResponse(uniclass_list)
+            response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
         else:
             response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     else:

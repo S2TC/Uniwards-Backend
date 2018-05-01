@@ -74,7 +74,7 @@ def VerifyPassword(password, hashed_pass):
         return False
 
 #Generate the JWT based on username, expires in 7 days
-def GenerateToken(username, hashed_pass):
+def GenerateToken(username):
     try:
         payload = {
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=7),
