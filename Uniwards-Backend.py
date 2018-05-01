@@ -77,6 +77,11 @@ def GetUniversities():
     response = UniversityHandle.GetUniversities()
     return response[0], response[1]
 
+@app.route('/api/getcoupons')
+def GetCoupons():
+    response = CouponHandle.GetCoupons()
+    return response[0], response[1]
+
 @app.route('/api/getcouponbyid/<coupon_id>')
 def GetCouponByID(coupon_id):
     response = CouponHandle.GetCouponByID(coupon_id)

@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6c7289b5-d3d0-4531-a6f5-2da314e60760" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CouponHandle.py" afterPath="$PROJECT_DIR$/CouponHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EnrolmentHandle.py" afterPath="$PROJECT_DIR$/EnrolmentHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoginHandle.py" afterPath="$PROJECT_DIR$/LoginHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PointHandle.py" afterPath="$PROJECT_DIR$/PointHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedemptionHandle.py" afterPath="$PROJECT_DIR$/RedemptionHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ResponseHandle.py" afterPath="$PROJECT_DIR$/ResponseHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RewardHandle.py" afterPath="$PROJECT_DIR$/RewardHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UniclassHandle.py" afterPath="$PROJECT_DIR$/UniclassHandle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.py" afterPath="$PROJECT_DIR$/Uniwards-Backend.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VendorHandle.py" afterPath="$PROJECT_DIR$/VendorHandle.py" />
     </list>
     <ignored path="Uniwards-Backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="154" column="29" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
+            <state relative-caret-position="273">
+              <caret line="81" column="25" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -58,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PointHandle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PointHandle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PointHandle.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-76">
@@ -343,6 +334,14 @@
       <option name="presentableId" value="Default" />
       <updated>1520547804152</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fixed a lot of issues (listed on github)">
+      <created>1525134093283</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1525134093283</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -388,6 +387,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed a lot of issues (listed on github)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a lot of issues (listed on github)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -711,14 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PointHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="31" column="82" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RedemptionHandle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-98">
@@ -753,11 +748,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="154" column="29" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
+        <state relative-caret-position="273">
+          <caret line="81" column="25" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-76">
+          <caret line="31" column="82" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>
