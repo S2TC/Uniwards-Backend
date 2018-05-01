@@ -3,7 +3,7 @@ import ResponseHandle, SQLHandle
 def GetUniversity(uni_code):
     temp_university = SQLHandle.university.query.filter_by(uni_code=uni_code).first()
     if(temp_university is not None):
-        response = ResponseHandle.GenerateUniversityResponse(temp_university.todict())
+        response = ResponseHandle.GenerateUniversityResponse("university_get_success", temp_university.todict())
     else:
         response = ResponseHandle.GenerateResponse('university_get_failed')
     return response
@@ -14,7 +14,7 @@ def GetUniversities():
     university_list = SQLHandle.GetListOfRows(temp_universities)
     if(university_list is not None):
         if(len(university_list) > 0):
-            response = ResponseHandle.GenerateUniversitiesResponse(university_list)
+            response = ResponseHandle.GenerateUniversitiesResponse("university_get_success", university_list)
         else:
             response = ResponseHandle.GenerateResponse('university_get_failed')
     else:
