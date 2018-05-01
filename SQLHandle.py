@@ -97,7 +97,7 @@ class coupon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     code = db.Column(db.Integer)
-    expiry = db.Column(db.DateTime)
+    expiry = db.Column(db.Text)
     desc = db.Column(db.Text)
     point_cost = db.Column(db.Integer)
     vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.id'))
@@ -136,7 +136,7 @@ class vendor(db.Model):
 
 class redemption(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.Text)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     coupon_id = db.Column(db.Integer, db.ForeignKey('coupon.id'))
 
@@ -154,7 +154,7 @@ class point(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     reward_id = db.Column(db.Integer, db.ForeignKey('reward.id'), primary_key=True)
     tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    date = db.Column(db.DateTime, primary_key=True)
+    date = db.Column(db.Text, primary_key=True)
 
 
     def __init__(self, student_id, reward_id, tutor_id, date):
@@ -192,7 +192,7 @@ class student(db.Model):
     mobile_no = db.Column(db.Text)
     username = db.Column(db.Text)
     password = db.Column(db.Text)
-    birth = db.Column(db.DateTime)
+    birth = db.Column(db.Text)
     type = db.Column(db.Integer)
     email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
@@ -217,7 +217,7 @@ class student(db.Model):
 class enrolled(db.Model):
     uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.Text)
 
     def __init__(self, uniclass_id, student_id, date):
         self.uniclass_id = uniclass_id
@@ -233,7 +233,7 @@ class beacon(db.Model):
     uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     longitude = db.Column(db.Integer)
     latitude = db.Column(db.Integer)
-    datetime = db.Column(db.DateTime)
+    datetime = db.Column(db.Text)
 
 
     def __init__(self, tutor_id, uniclass_id, longitude, latitude, datetime):
