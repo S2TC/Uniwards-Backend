@@ -52,7 +52,7 @@ def GetUniclassesByUniID(uni_id):
 
 def RegisterUniclass(req_data):
     temp_uniclass = SQLHandle.uniclass(name=req_data['name'], tutor_id=req_data['tutor_id'],
-                                           id=req_data['id'])
+                                           uni_id=req_data['uni_id'])
     if(SQLHandle.InsertRowObject(temp_uniclass)):
         response = ResponseHandle.GenerateResponse('uniclass_register_success')
     else:
