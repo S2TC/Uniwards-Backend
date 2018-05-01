@@ -38,7 +38,7 @@ def GetUniclassesByTutorID(tutor_id):
     return response
 
 def GetUniclassesByUniID(uni_id):
-    temp_uniclasses = SQLHandle.uniclass.query.filter_by(uni_id=uni_id)
+    temp_uniclasses = SQLHandle.uniclass.query.filter_by(id=uni_id)
     uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
     if (uniclass_list is not None):
         if(len(uniclass_list) > 0):
@@ -52,7 +52,7 @@ def GetUniclassesByUniID(uni_id):
 
 def RegisterUniclass(req_data):
     temp_uniclass = SQLHandle.uniclass(name=req_data['name'], tutor_id=req_data['tutor_id'],
-                                           uni_id=req_data['uni_id'])
+                                           id=req_data['id'])
     if(SQLHandle.InsertRowObject(temp_uniclass)):
         response = ResponseHandle.GenerateResponse('uniclass_register_success')
     else:

@@ -217,12 +217,12 @@ class student(db.Model):
 class enrolled(db.Model):
     uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    en_date = db.Column(db.DateTime)
+    date = db.Column(db.DateTime)
 
     def __init__(self, uniclass_id, student_id, date):
         self.uniclass_id = uniclass_id
         self.student_id = student_id
-        self.en_date = date
+        self.date = date
 
     def todict(self):
         return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}

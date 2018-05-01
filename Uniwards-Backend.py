@@ -182,9 +182,14 @@ def GetUniclassesByTutorID(tutor_id):
     response = UniclassHandle.GetUniclassesByTutorID(tutor_id)
     return response[0], response[1]
 
-@app.route('/api/getuniclassesbyunid/<uni_id>')
+@app.route('/api/getuniclassesbyuniid/<uni_id>')
 def GetUniclassesByUniID(uni_id):
     response = UniclassHandle.GetUniclassesByUniID(uni_id)
+    return response[0], response[1]
+
+@app.route('/api/getuniclasses')
+def GetUniclasses():
+    response = UniclassHandle.GetUniclasses()
     return response[0], response[1]
 '''-------------------------------------------------------'''
 
