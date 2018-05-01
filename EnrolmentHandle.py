@@ -1,4 +1,5 @@
 import ResponseHandle, SQLHandle
+from dateutil import parser
 
 def GetEnrolmentsByStudentID(student_id):
     temp_enrolments = SQLHandle.enrolled.query.filter_by(student_id=student_id)
@@ -43,8 +44,9 @@ def GetEnrolments():
 
 
 def CreateEnrolment(req_data):
+    parsed_date = parser.parse(req_date['date'])
     temp_enrolment = SQLHandle.enrolled(uniclass_id=req_data['uniclass_id'], student_id=req_data['student_id'],
-                                         date=req_data['date'])
+                                         date=parsed_date)
     if(SQLHandle.InsertRowObject(temp_enrolment)):
         response = ResponseHandle.GenerateResponse('enrolment_register_success')
     else:

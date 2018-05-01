@@ -1,4 +1,5 @@
 import ResponseHandle, SQLHandle
+from dateutil import parser
 
 def GetCouponByID(coupon_id):
     temp_coupon = SQLHandle.coupon.query.filter_by(id=coupon_id).first()
@@ -35,8 +36,9 @@ def GetCoupons():
 
 
 def CreateCoupon(req_data):
+    parsed_date = parser.parse(req_data['expiry'])
     temp_coupon = SQLHandle.coupon(name=req_data['name'], code=req_data['code'],
-                                           expiry=req_data['expiry'], desc=req_data['desc'],
+                                           expiry=parsed_date, desc=req_data['desc'],
                                            point_cost=req_data['point_cost'], vendor_id=req_data['vendor_id'])
     if(SQLHandle.InsertRowObject(temp_coupon)):
         response = ResponseHandle.GenerateResponse('coupon_register_success')

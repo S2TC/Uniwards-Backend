@@ -1,4 +1,5 @@
 import ResponseHandle, SQLHandle
+from dateutil import parser
 
 def GetPointsByStudentID(student_id):
     temp_points = SQLHandle.point.query.filter_by(student_id=student_id)
@@ -39,8 +40,9 @@ def GetPointsByRewardID(reward_id):
 
 
 def CreatePoint(req_data):
+    parsed_date = parser.parse(req_data['date'])
     temp_point = SQLHandle.point(student_id=req_data['student_id'], reward_id=req_data['reward_id'],
-                                           tutor_id=req_data['tutor_id'], date=req_data['date'])
+                                           tutor_id=req_data['tutor_id'], date=parsed_date)
     if(SQLHandle.InsertRowObject(temp_point)):
         response = ResponseHandle.GenerateResponse('point_register_success')
     else:

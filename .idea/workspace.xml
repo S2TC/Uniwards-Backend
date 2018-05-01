@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c7289b5-d3d0-4531-a6f5-2da314e60760" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLHandle.py" afterPath="$PROJECT_DIR$/SQLHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UniclassHandle.py" afterPath="$PROJECT_DIR$/UniclassHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.py" afterPath="$PROJECT_DIR$/Uniwards-Backend.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CouponHandle.py" afterPath="$PROJECT_DIR$/CouponHandle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EnrolmentHandle.py" afterPath="$PROJECT_DIR$/EnrolmentHandle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PointHandle.py" afterPath="$PROJECT_DIR$/PointHandle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedemptionHandle.py" afterPath="$PROJECT_DIR$/RedemptionHandle.py" />
     </list>
     <ignored path="Uniwards-Backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +29,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="431">
@@ -43,9 +44,11 @@
       <file leaf-file-name="EnrolmentHandle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EnrolmentHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="35" column="90" selection-start-line="35" selection-start-column="90" selection-end-line="35" selection-end-column="90" />
-              <folding />
+            <state relative-caret-position="166">
+              <caret line="48" column="57" selection-start-line="48" selection-start-column="57" selection-end-line="48" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/SQLHandle.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="185">
-              <caret line="57" column="14" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="14" />
+              <caret line="99" column="9" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="9" />
               <folding>
                 <element signature="e#97#120#0" expanded="true" />
               </folding>
@@ -62,12 +65,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="RegistrationHandle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RegistrationHandle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PointHandle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PointHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="31" column="82" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
-              <folding />
+            <state relative-caret-position="968">
+              <caret line="44" column="90" selection-start-line="44" selection-start-column="90" selection-end-line="44" selection-end-column="90" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,7 +90,7 @@
       <file leaf-file-name="ResponseHandle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ResponseHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1068">
+            <state relative-caret-position="3102">
               <caret line="141" column="82" selection-start-line="141" selection-start-column="82" selection-end-line="141" selection-end-column="82" />
               <folding />
             </state>
@@ -86,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/CouponHandle.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="22">
-              <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="85" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -95,9 +110,11 @@
       <file leaf-file-name="RedemptionHandle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RedemptionHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-98">
-              <caret line="43" column="92" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
-              <folding />
+            <state relative-caret-position="-780">
+              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,21 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RewardHandle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RewardHandle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RewardHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="-352">
               <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UniversityHandle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UniversityHandle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -156,19 +163,19 @@
         <option value="$PROJECT_DIR$/EnrollmentHandle.py" />
         <option value="$PROJECT_DIR$/EnrolledHandle.py" />
         <option value="$PROJECT_DIR$/ClassHandle.py" />
-        <option value="$PROJECT_DIR$/RegistrationHandle.py" />
         <option value="$PROJECT_DIR$/LoginHandle.py" />
         <option value="$PROJECT_DIR$/ResponseHandle.py" />
-        <option value="$PROJECT_DIR$/EnrolmentHandle.py" />
-        <option value="$PROJECT_DIR$/PointHandle.py" />
-        <option value="$PROJECT_DIR$/RedemptionHandle.py" />
         <option value="$PROJECT_DIR$/RewardHandle.py" />
         <option value="$PROJECT_DIR$/VendorHandle.py" />
-        <option value="$PROJECT_DIR$/CouponHandle.py" />
         <option value="$PROJECT_DIR$/UniversityHandle.py" />
         <option value="$PROJECT_DIR$/SQLHandle.py" />
         <option value="$PROJECT_DIR$/UniclassHandle.py" />
         <option value="$PROJECT_DIR$/Uniwards-Backend.py" />
+        <option value="$PROJECT_DIR$/RegistrationHandle.py" />
+        <option value="$PROJECT_DIR$/RedemptionHandle.py" />
+        <option value="$PROJECT_DIR$/CouponHandle.py" />
+        <option value="$PROJECT_DIR$/PointHandle.py" />
+        <option value="$PROJECT_DIR$/EnrolmentHandle.py" />
       </list>
     </option>
   </component>
@@ -357,7 +364,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -652,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RegistrationHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ErrorHandle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -691,64 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EnrolmentHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="35" column="90" selection-start-line="35" selection-start-column="90" selection-end-line="35" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PointHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="31" column="82" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResponseHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="141" column="82" selection-start-line="141" selection-start-column="82" selection-end-line="141" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CouponHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RedemptionHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="43" column="92" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RewardHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="57" column="14" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="14" />
-          <folding>
-            <element signature="e#97#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UniclassHandle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -764,6 +706,78 @@
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RegistrationHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="99" column="9" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="9" />
+          <folding>
+            <element signature="e#97#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RedemptionHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-780">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResponseHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3102">
+          <caret line="141" column="82" selection-start-line="141" selection-start-column="82" selection-end-line="141" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="968">
+          <caret line="44" column="90" selection-start-line="44" selection-start-column="90" selection-end-line="44" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CouponHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EnrolmentHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="48" column="57" selection-start-line="48" selection-start-column="57" selection-end-line="48" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RewardHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-352">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
