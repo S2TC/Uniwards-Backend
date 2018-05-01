@@ -44,7 +44,7 @@ def GetEnrolments():
 
 
 def CreateEnrolment(req_data):
-    parsed_date = parser.parse(req_date['date'])
+    parsed_date = parser.parse(req_data['date'])
     temp_enrolment = SQLHandle.enrolled(uniclass_id=req_data['uniclass_id'], student_id=req_data['student_id'],
                                          date=parsed_date)
     if(SQLHandle.InsertRowObject(temp_enrolment)):
