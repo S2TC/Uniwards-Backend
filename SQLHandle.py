@@ -136,7 +136,7 @@ class vendor(db.Model):
 
 class redemption(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Text)
+    date = db.Column(db.VARCHAR(10))
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     coupon_id = db.Column(db.Integer, db.ForeignKey('coupon.id'))
 
@@ -154,7 +154,7 @@ class point(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     reward_id = db.Column(db.Integer, db.ForeignKey('reward.id'), primary_key=True)
     tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    date = db.Column(db.Text, primary_key=True)
+    date = db.Column(db.VARCHAR(10), primary_key=True)
 
 
     def __init__(self, student_id, reward_id, tutor_id, date):
@@ -217,7 +217,7 @@ class student(db.Model):
 class enrolled(db.Model):
     uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    date = db.Column(db.Text)
+    date = db.Column(db.VARCHAR(10))
 
     def __init__(self, uniclass_id, student_id, date):
         self.uniclass_id = uniclass_id
@@ -233,7 +233,7 @@ class beacon(db.Model):
     uniclass_id = db.Column(db.Integer, db.ForeignKey('uniclass.id'), primary_key=True)
     longitude = db.Column(db.Integer)
     latitude = db.Column(db.Integer)
-    datetime = db.Column(db.Text)
+    datetime = db.Column(db.VARCHAR(10))
 
 
     def __init__(self, tutor_id, uniclass_id, longitude, latitude, datetime):
