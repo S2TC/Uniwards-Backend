@@ -1,6 +1,9 @@
 import ResponseHandle, SQLHandle
 import jwt
+from flask import Flask
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '*EtG*J 8);lJzP`HF}S5_v>aFLHX6D>qu)~&q5xF+rY{Fqixz,5A#h]M`Q%?+?gG'
 def GetStudent(token):
     payload = jwt.decode(token, app.config['SECRET_KEY'])
     temp_user = SQLHandle.student.query.filter_by(username=payload['username'])
