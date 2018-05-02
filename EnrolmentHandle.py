@@ -61,7 +61,7 @@ def UpdateEnrolment(req_data):
 def DeleteEnrolment(req_data):
     temp_enrolment = SQLHandle.enrolled.query.filter_by(uniclass_id=req_data['uniclass_id'],
                                                         student_id=req_data['student_id'],
-                                                        date=req_data['date'])
+                                                        date=req_data['date']).first()
     if(SQLHandle.DeleteRowObject(temp_enrolment)):
         response = ResponseHandle.GenerateResponse('enrolment_delete_success')
     else:

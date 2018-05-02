@@ -32,7 +32,7 @@ def InsertRowObject(obj):
         CommitSession()
         log_inst.Log("Inserted Row Obj: %s" % (obj), LogLevel.DEBUG)
         return True
-    except error:
+    except:
         log_inst.Log("Failed to insert Row Obj: %s" % (obj), LogLevel.ERROR)
         return False
 
@@ -43,7 +43,7 @@ def DeleteRowObject(obj):
         CommitSession()
         log_inst.Log("Deleted Row Obj: %s" % (obj), LogLevel.DEBUG)
         return True
-    except error:
+    except:
         log_inst.Log("Failed to delete Row Obj: %s" % (obj), LogLevel.ERROR)
         return False
 
