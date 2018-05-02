@@ -1,4 +1,5 @@
 import ResponseHandle, SQLHandle
+import jwt
 
 def GetStudent(token):
     payload = jwt.decode(token, app.config['SECRET_KEY'])
