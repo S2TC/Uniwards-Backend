@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6c7289b5-d3d0-4531-a6f5-2da314e60760" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EnrolmentHandle.py" afterPath="$PROJECT_DIR$/EnrolmentHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoginHandle.py" afterPath="$PROJECT_DIR$/LoginHandle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ResponseHandle.py" afterPath="$PROJECT_DIR$/ResponseHandle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UniclassHandle.py" afterPath="$PROJECT_DIR$/UniclassHandle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Uniwards-Backend.py" afterPath="$PROJECT_DIR$/Uniwards-Backend.py" />
     </list>
     <ignored path="Uniwards-Backend.iws" />
@@ -33,8 +31,8 @@
       <file leaf-file-name="Uniwards-Backend.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="243" column="35" selection-start-line="243" selection-start-column="35" selection-end-line="243" selection-end-column="35" />
+            <state relative-caret-position="321">
+              <caret line="241" column="19" selection-start-line="241" selection-start-column="19" selection-end-line="241" selection-end-column="19" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -105,8 +103,8 @@
       <file leaf-file-name="UniclassHandle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UniclassHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
+            <state relative-caret-position="122">
+              <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -170,7 +168,6 @@
         <option value="$PROJECT_DIR$/VendorHandle.py" />
         <option value="$PROJECT_DIR$/UniversityHandle.py" />
         <option value="$PROJECT_DIR$/RegistrationHandle.py" />
-        <option value="$PROJECT_DIR$/UniclassHandle.py" />
         <option value="$PROJECT_DIR$/PointHandle.py" />
         <option value="$PROJECT_DIR$/RedemptionHandle.py" />
         <option value="$PROJECT_DIR$/SQLHandle.py" />
@@ -178,6 +175,7 @@
         <option value="$PROJECT_DIR$/ResponseHandle.py" />
         <option value="$PROJECT_DIR$/LoginHandle.py" />
         <option value="$PROJECT_DIR$/EnrolmentHandle.py" />
+        <option value="$PROJECT_DIR$/UniclassHandle.py" />
         <option value="$PROJECT_DIR$/Uniwards-Backend.py" />
       </list>
     </option>
@@ -707,14 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UniclassHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VendorHandle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -779,10 +769,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UniclassHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Uniwards-Backend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="243" column="35" selection-start-line="243" selection-start-column="35" selection-end-line="243" selection-end-column="35" />
+        <state relative-caret-position="321">
+          <caret line="241" column="19" selection-start-line="241" selection-start-column="19" selection-end-line="241" selection-end-column="19" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>

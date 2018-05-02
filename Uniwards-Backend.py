@@ -239,7 +239,7 @@ def CreateUniclass():
     return response[0], response[1]
 
 @app.route('/api/deleteenrolment', methods = ['POST'])
-def CreateUniversity():
+def DeleteEnrolment():
     response = EnrolmentHandle.DeleteEnrolment(request.form)
     return response[0], response[1]
 '''-------------------------------------------------------'''
