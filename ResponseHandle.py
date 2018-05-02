@@ -85,7 +85,16 @@ responses = {"register_success": (200, "0"),
              "uniclass_get_success": (200, "4"),
              "uniclass_register_success": (200, "5"),
              "uniclass_delete_success": (200, "6"),
-             "uniclass_update_success": (200, "7")}
+             "uniclass_update_success": (200, "7"),
+             "student_get_failed": (200, "0"),
+             "student_register_failed": (200, "1"),
+             "student_delete_failed": (200, "2"),
+             "student_update_failed": (200, "3"),
+             "student_get_success": (200, "4"),
+             "student_register_success": (200, "5"),
+             "student_delete_success": (200, "6"),
+             "student_update_success": (200, "7")
+             }
 
 
 #Return json containing response message + HTML response code
@@ -93,6 +102,9 @@ def GenerateResponse(response_type):
     return [jsonify(response_message=responses[response_type][1]), responses[response_type][0]]
 
 #Return json containing response message & JWT + HTML response code
+def GenerateStudentResponse(response_type, student):
+    return [jsonify(response_message=responses[response_type][1], student=student), responses[response_type][0]]
+
 def GenerateTokenResponse(response_type, raw_token, uni_id):
     return [jsonify(response_message=responses[response_type][1], user_token=raw_token, uni_id=uni_id), responses[response_type][0]]
 

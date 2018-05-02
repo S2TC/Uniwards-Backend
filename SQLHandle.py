@@ -196,6 +196,7 @@ class student(db.Model):
     type = db.Column(db.Integer)
     email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
+    total_points = db.Column(db.Integer)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
     def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, uni_id):
@@ -208,6 +209,7 @@ class student(db.Model):
         self.type = type
         self.email = email
         self.auth_status = auth_status
+        self.total_points = 0
         self.uni_id = uni_id
 
     def todict(self):

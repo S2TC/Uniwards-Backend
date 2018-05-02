@@ -1,7 +1,7 @@
 from flask import Flask, request
 from ConfigHandle import Config
 import SQLHandle, RegistrationHandle, LoginHandle, ResponseHandle, UniversityHandle, CouponHandle, RewardHandle
-import PointHandle, RedemptionHandle, VendorHandle, EnrolmentHandle, UniclassHandle
+import PointHandle, RedemptionHandle, VendorHandle, EnrolmentHandle, UniclassHandle, StudentHandle
 from LogHandle import Logger, LogLevel
 
 app = Flask(__name__)
@@ -192,6 +192,10 @@ def GetUniclasses():
     response = UniclassHandle.GetUniclasses()
     return response[0], response[1]
 
+@app.route('/api/getstudent')
+def GetStudent():
+    response = StudentHandle.GetStudent(request.headers['Token'])
+    return response[0], response[1]
 
 '''-------------------------------------------------------'''
 
