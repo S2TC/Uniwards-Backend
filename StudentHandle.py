@@ -9,7 +9,7 @@ def GetStudent(token):
     temp_user = SQLHandle.student.query.filter_by(username=payload['username'])
     if(temp_user is not None):
         temp_user.password = ""
-        response = ResponseHandle.GenerateStudentResponse("student_get_success", temp_user)
+        response = ResponseHandle.GenerateStudentResponse("student_get_success", temp_user.todict())
     else:
         response = ResponseHandle.GenerateResponse("student_get_failed")
     return response
