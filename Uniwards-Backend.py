@@ -191,6 +191,8 @@ def GetUniclassesByUniID(uni_id):
 def GetUniclasses():
     response = UniclassHandle.GetUniclasses()
     return response[0], response[1]
+
+
 '''-------------------------------------------------------'''
 
 
@@ -234,6 +236,11 @@ def CreateEnrolment():
 @app.route('/api/newuniclass', methods = ['POST'])
 def CreateUniclass():
     response = UniclassHandle.RegisterUniclass(request.form)
+    return response[0], response[1]
+
+@app.route('/api/deleteenrolment', methods = ['POST'])
+def CreateUniversity():
+    response = EnrolmentHandle.DeleteEnrolment(request.form)
     return response[0], response[1]
 '''-------------------------------------------------------'''
 
