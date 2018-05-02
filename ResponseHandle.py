@@ -93,8 +93,8 @@ def GenerateResponse(response_type):
     return [jsonify(response_message=responses[response_type][1]), responses[response_type][0]]
 
 #Return json containing response message & JWT + HTML response code
-def GenerateTokenResponse(response_type, raw_token):
-    return [jsonify(response_message=responses[response_type][1], user_token=raw_token), responses[response_type][0]]
+def GenerateTokenResponse(response_type, raw_token, uni_id):
+    return [jsonify(response_message=responses[response_type][1], user_token=raw_token, uni_id=uni_id), responses[response_type][0]]
 
 def GenerateUniversitiesResponse(response_type, universities):
     return [jsonify(response_message=responses[response_type][1], universities=universities), responses[response_type][0]]
