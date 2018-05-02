@@ -58,7 +58,7 @@ def Login(req_data):
     if(temp_user is not None):
         if(VerifyPassword(req_data['password'], temp_user.password)):
             token = GenerateToken(temp_user.username)
-            response = ResponseHandle.GenerateTokenResponse('login_success', token, temp_user.id)
+            response = ResponseHandle.GenerateTokenResponse('login_success', token, temp_user.uni_id)
         else:
             response = ResponseHandle.GenerateTokenResponse('login_incorrect_password', "", "")
     else:
