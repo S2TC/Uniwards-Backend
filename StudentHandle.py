@@ -21,7 +21,7 @@ def SetTotalPoints(student):
         if (point_list is not None):
             if(len(point_list) > 0):
                 for point in point_list:
-                    reward = SQLHandle.reward.query.filter_by(id=point['reward_id'])
+                    reward = SQLHandle.reward.query.filter_by(id=point['reward_id']).first()
                     total_points = total_points + reward.value
                 student.total_points = total_points
                 SQLHandle.CommitSession()
