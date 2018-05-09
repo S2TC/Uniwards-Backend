@@ -12,10 +12,13 @@ def GetVendorByID(vendor_id):
 
 def GetVendors():
     temp_vendors = SQLHandle.vendor.query.all()
-    vendor_list = SQLHandle.GetListOfRows(temp_vendors)
-    if (vendor_list is not None):
-        if(len(vendor_list) > 0):
-            response = ResponseHandle.GenerateVendorsResponse("vendor_get_success", vendor_list)
+    if (temp_vendors is not None):
+        vendor_list = SQLHandle.GetListOfRows(temp_vendors)
+        if (vendor_list is not None):
+            if(len(vendor_list) > 0):
+                response = ResponseHandle.GenerateVendorsResponse("vendor_get_success", vendor_list)
+            else:
+                response = ResponseHandle.GenerateResponse('vendor_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('vendor_get_failed')
     else:
@@ -26,14 +29,18 @@ def GetVendors():
 
 def GetVendorsByType(type):
     temp_vendors = SQLHandle.vendor.query.filter_by(type=type)
-    vendor_list = SQLHandle.GetListOfRows(temp_vendors)
-    if (vendor_list is not None):
-        if(len(vendor_list) > 0):
-            response = ResponseHandle.GenerateVendorsResponse("vendor_get_success", vendor_list)
+    if (temp_vendors is not None):
+        vendor_list = SQLHandle.GetListOfRows(temp_vendors)
+        if (vendor_list is not None):
+            if(len(vendor_list) > 0):
+                response = ResponseHandle.GenerateVendorsResponse("vendor_get_success", vendor_list)
+            else:
+                response = ResponseHandle.GenerateResponse('vendor_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('vendor_get_failed')
     else:
         response = ResponseHandle.GenerateResponse('vendor_get_failed')
+
 
     return response
 

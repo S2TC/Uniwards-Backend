@@ -3,24 +3,31 @@ from datetime import datetime
 
 def GetEnrolmentsByStudentID(student_id):
     temp_enrolments = SQLHandle.enrolled.query.filter_by(student_id=student_id)
-    enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
-    if (enrolment_list is not None):
-        if(len(enrolment_list) > 0):
-            response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
+    if(temp_enrolments is not None):
+        enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
+        if (enrolment_list is not None):
+            if(len(enrolment_list) > 0):
+                response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
+            else:
+                response = ResponseHandle.GenerateResponse('enrolment_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('enrolment_get_failed')
     else:
         response = ResponseHandle.GenerateResponse('enrolment_get_failed')
 
-    return response
+
+        return response
 
 
 def GetEnrolmentsByClassID(uniclass_id):
     temp_enrolments = SQLHandle.enrolled.query.filter_by(uniclass_id=uniclass_id)
-    enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
-    if (enrolment_list is not None):
-        if(len(enrolment_list) > 0):
-            response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
+    if (temp_enrolments is not None):
+        enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
+        if (enrolment_list is not None):
+            if(len(enrolment_list) > 0):
+                response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
+            else:
+                response = ResponseHandle.GenerateResponse('enrolment_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('enrolment_get_failed')
     else:
@@ -31,10 +38,13 @@ def GetEnrolmentsByClassID(uniclass_id):
 
 def GetEnrolments():
     temp_enrolments = SQLHandle.enrolled.query.all()
-    enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
-    if (enrolment_list is not None):
-        if(len(enrolment_list) > 0):
-            response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
+    if (temp_enrolments is not None):
+        enrolment_list = SQLHandle.GetListOfRows(temp_enrolments)
+        if (enrolment_list is not None):
+            if(len(enrolment_list) > 0):
+                response = ResponseHandle.GenerateEnrolmentsResponse("enrolment_get_success", enrolment_list)
+            else:
+                response = ResponseHandle.GenerateResponse('enrolment_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('enrolment_get_failed')
     else:

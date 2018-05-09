@@ -22,11 +22,14 @@ def GetCouponByVendor(vendor_id):
 
 def GetCoupons():
     temp_coupons = SQLHandle.coupon.query.all()
-    coupon_list = SQLHandle.GetListOfRows(temp_coupons)
-    if (coupon_list is not None):
-        if(len(coupon_list) > 0):
-            #if(start < len(coupon_list) and end < len(coupon_list)):
-            response = ResponseHandle.GenerateCouponsResponse("coupon_get_success", coupon_list)
+    if (temp_coupons is not None):
+        coupon_list = SQLHandle.GetListOfRows(temp_coupons)
+        if (coupon_list is not None):
+            if(len(coupon_list) > 0):
+                #if(start < len(coupon_list) and end < len(coupon_list)):
+                response = ResponseHandle.GenerateCouponsResponse("coupon_get_success", coupon_list)
+            else:
+                response = ResponseHandle.GenerateResponse('coupon_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('coupon_get_failed')
     else:
@@ -37,11 +40,14 @@ def GetCoupons():
 
 def GetCouponsByTier(tier):
     temp_coupons = SQLHandle.coupon.query.filter_by(tier=tier)
-    coupon_list = SQLHandle.GetListOfRows(temp_coupons)
-    if (coupon_list is not None):
-        if(len(coupon_list) > 0):
-            #if(start < len(coupon_list) and end < len(coupon_list)):
-            response = ResponseHandle.GenerateCouponsResponse("coupon_get_success", coupon_list)
+    if (temp_coupons is not None):
+        coupon_list = SQLHandle.GetListOfRows(temp_coupons)
+        if (coupon_list is not None):
+            if(len(coupon_list) > 0):
+                #if(start < len(coupon_list) and end < len(coupon_list)):
+                response = ResponseHandle.GenerateCouponsResponse("coupon_get_success", coupon_list)
+            else:
+                response = ResponseHandle.GenerateResponse('coupon_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('coupon_get_failed')
     else:

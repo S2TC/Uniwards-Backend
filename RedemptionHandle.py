@@ -11,24 +11,29 @@ def GetRedemptionByID(redemption_id):
 
 def GetRedemptionsByStudentID(student_id):
     temp_redemptions = SQLHandle.redemption.query.filter_by(student_id=student_id)
-    redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
-    if (redemption_list is not None):
-        if(len(redemption_list) > 0):
-            response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
+    if (temp_redemptions is not None):
+        redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
+        if (redemption_list is not None):
+            if(len(redemption_list) > 0):
+                response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
+            else:
+                response = ResponseHandle.GenerateResponse('redemption_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('redemption_get_failed')
     else:
         response = ResponseHandle.GenerateResponse('redemption_get_failed')
-
     return response
 
 
 def GetRedemptionsByCouponID(coupon_id):
     temp_redemptions = SQLHandle.redemption.query.filter_by(coupon_id=coupon_id)
-    redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
-    if (redemption_list is not None):
-        if(len(redemption_list) > 0):
-            response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
+    if (temp_redemptions is not None):
+        redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
+        if (redemption_list is not None):
+            if(len(redemption_list) > 0):
+                response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
+            else:
+                response = ResponseHandle.GenerateResponse('redemption_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('redemption_get_failed')
     else:
@@ -39,10 +44,13 @@ def GetRedemptionsByCouponID(coupon_id):
 
 def GetRedemptions():
     temp_redemptions = SQLHandle.redemption.query.all()
-    redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
-    if (redemption_list is not None):
-        if(len(redemption_list) > 0):
-            response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
+    if (temp_redemptions is not None):
+        redemption_list = SQLHandle.GetListOfRows(temp_redemptions)
+        if (redemption_list is not None):
+            if(len(redemption_list) > 0):
+                response = ResponseHandle.GenerateRedemptionsResponse("redemption_get_success", redemption_list)
+            else:
+                response = ResponseHandle.GenerateResponse('redemption_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('redemption_get_failed')
     else:

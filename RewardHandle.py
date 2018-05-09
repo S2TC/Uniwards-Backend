@@ -11,10 +11,13 @@ def GetRewardByID(reward_id):
 
 def GetRewards():
     temp_rewards = SQLHandle.reward.query.all()
-    reward_list = SQLHandle.GetListOfRows(temp_rewards)
-    if(reward_list is not None):
-        if(len(reward_list) > 0):
-            response = ResponseHandle.GenerateRewardsResponse("reward_get_success", reward_list)
+    if (temp_rewards is not None):
+        reward_list = SQLHandle.GetListOfRows(temp_rewards)
+        if(reward_list is not None):
+            if(len(reward_list) > 0):
+                response = ResponseHandle.GenerateRewardsResponse("reward_get_success", reward_list)
+            else:
+                response = ResponseHandle.GenerateResponse('reward_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('reward_get_failed')
     else:
@@ -24,10 +27,13 @@ def GetRewards():
 
 def GetRewardsByTier(tier):
     temp_rewards = SQLHandle.reward.query.filter_by(tier=tier)
-    reward_list = SQLHandle.GetListOfRows(temp_rewards)
-    if(reward_list is not None):
-        if(len(reward_list) > 0):
-            response = ResponseHandle.GenerateRewardsResponse("reward_get_success", reward_list)
+    if (temp_rewards is not None):
+        reward_list = SQLHandle.GetListOfRows(temp_rewards)
+        if(reward_list is not None):
+            if(len(reward_list) > 0):
+                response = ResponseHandle.GenerateRewardsResponse("reward_get_success", reward_list)
+            else:
+                response = ResponseHandle.GenerateResponse('reward_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('reward_get_failed')
     else:

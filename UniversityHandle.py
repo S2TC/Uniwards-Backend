@@ -11,10 +11,13 @@ def GetUniversity(uni_code):
 
 def GetUniversities():
     temp_universities = SQLHandle.university.query.all()
-    university_list = SQLHandle.GetListOfRows(temp_universities)
-    if(university_list is not None):
-        if(len(university_list) > 0):
-            response = ResponseHandle.GenerateUniversitiesResponse("university_get_success", university_list)
+    if (temp_universities is not None):
+        university_list = SQLHandle.GetListOfRows(temp_universities)
+        if(university_list is not None):
+            if(len(university_list) > 0):
+                response = ResponseHandle.GenerateUniversitiesResponse("university_get_success", university_list)
+            else:
+                response = ResponseHandle.GenerateResponse('university_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('university_get_failed')
     else:

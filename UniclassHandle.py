@@ -12,10 +12,13 @@ def GetUniclassByName(name):
 
 def GetUniclasses():
     temp_uniclasses = SQLHandle.uniclass.query.all()
-    uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
-    if (uniclass_list is not None):
-        if(len(uniclass_list) > 0):
-            response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
+    if (temp_uniclasses is not None):
+        uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
+        if (uniclass_list is not None):
+            if(len(uniclass_list) > 0):
+                response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
+            else:
+                response = ResponseHandle.GenerateResponse('uniclass_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     else:
@@ -26,10 +29,13 @@ def GetUniclasses():
 
 def GetUniclassesByTutorID(tutor_id):
     temp_uniclasses = SQLHandle.uniclass.query.filter_by(tutor_id=tutor_id)
-    uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
-    if (uniclass_list is not None):
-        if(len(uniclass_list) > 0):
-            response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
+    if (temp_uniclasses is not None):
+        uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
+        if (uniclass_list is not None):
+            if(len(uniclass_list) > 0):
+                response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
+            else:
+                response = ResponseHandle.GenerateResponse('uniclass_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     else:
@@ -39,10 +45,13 @@ def GetUniclassesByTutorID(tutor_id):
 
 def GetUniclassesByUniID(uni_id):
     temp_uniclasses = SQLHandle.uniclass.query.filter_by(uni_id=uni_id)
-    uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
-    if (uniclass_list is not None):
-        if(len(uniclass_list) > 0):
-            response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
+    if (temp_uniclasses is not None):
+        uniclass_list = SQLHandle.GetListOfRows(temp_uniclasses)
+        if (uniclass_list is not None):
+            if(len(uniclass_list) > 0):
+                response = ResponseHandle.GenerateUniclassesResponse("uniclass_get_success", uniclass_list)
+            else:
+                response = ResponseHandle.GenerateResponse('uniclass_get_failed')
         else:
             response = ResponseHandle.GenerateResponse('uniclass_get_failed')
     else:
