@@ -1,4 +1,4 @@
-import ResponseHandle, SQLHandle
+import ResponseHandle, SQLHandle, StudentHandle
 from datetime import datetime
 def GetPointsByStudentID(student_id):
     temp_points = SQLHandle.point.query.filter_by(student_id=student_id)
