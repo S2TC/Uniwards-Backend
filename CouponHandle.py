@@ -35,6 +35,21 @@ def GetCoupons():
     return response
 
 
+def GetCouponsByTier(tier):
+    temp_coupons = SQLHandle.coupon.query.filter_by(tier=tier)
+    coupon_list = SQLHandle.GetListOfRows(temp_coupons)
+    if (coupon_list is not None):
+        if(len(coupon_list) > 0):
+            #if(start < len(coupon_list) and end < len(coupon_list)):
+            response = ResponseHandle.GenerateCouponsResponse("coupon_get_success", coupon_list)
+        else:
+            response = ResponseHandle.GenerateResponse('coupon_get_failed')
+    else:
+        response = ResponseHandle.GenerateResponse('coupon_get_failed')
+
+    return response
+
+
 def CreateCoupon(req_data):
     #parsed_date = datetime.strptime(req_data['expiry'], "%m/%d/%Y").strftime('%m/%d/%Y')
     temp_coupon = SQLHandle.coupon(name=req_data['name'], code=req_data['code'],

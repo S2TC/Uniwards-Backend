@@ -60,6 +60,20 @@ def StudentLogin():
         log_inst.Log("Student login success: %s" % (request.form['username']), LogLevel.DEBUG)
     return response[0], response[1]
 
+
+@app.route('/api/validate_studentpasscode/<passcode>')
+def ValidateToken(passcode):
+    response = StudentHandle.ValidateStudentPasscode(request.headers['Token'], passcode)
+    print response
+    return response[0], response[1]
+
+
+@app.route('/api/validate_vendorpasscode/<passcode>/<vendor_id>')
+def ValidateToken(passcode):
+    response = VendorHandle.ValidateVendorPasscode(passcode, vendor_id)
+    print response
+    return response[0], response[1]
+
 '''-------------------------------------------------------'''
 
 
@@ -85,6 +99,11 @@ def GetCoupons():
 @app.route('/api/getcouponbyid/<coupon_id>')
 def GetCouponByID(coupon_id):
     response = CouponHandle.GetCouponByID(coupon_id)
+    return response[0], response[1]
+
+@app.route('/api/getcouponsbytier/<tier>')
+def GetCouponsByTier(tier):
+    response = CouponHandle.GetCouponsByTier(tier)
     return response[0], response[1]
 
 @app.route('/api/getcouponbyvendor/<vendor_id>')

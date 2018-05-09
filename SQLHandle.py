@@ -121,14 +121,15 @@ class vendor(db.Model):
     website = db.Column(db.Text)
     type = db.Column(db.Integer)
     email = db.Column(db.Text)
+    passcode = db.Column(db.Integer)
 
-
-    def __init__(self, name, mobile, website, type, email):
+    def __init__(self, name, mobile, website, type, email, passcode):
         self.name = name
         self.mobile = mobile
         self.website = website
         self.type = type
         self.email = email
+        self.passcode = passcode
 
     def todict(self):
         return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
@@ -197,9 +198,10 @@ class student(db.Model):
     email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
     total_points = db.Column(db.Integer)
+    passcode = db.Column(db.Interger)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
-    def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, uni_id):
+    def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, passcode, uni_id):
         self.fname = fname
         self.lname = lname
         self.mobile_no = mobile_no
@@ -210,6 +212,7 @@ class student(db.Model):
         self.email = email
         self.auth_status = auth_status
         self.total_points = 0
+        self.passcode = passcode
         self.uni_id = uni_id
 
     def todict(self):

@@ -93,7 +93,9 @@ responses = {"register_success": (200, "0"),
              "student_get_success": (200, "4"),
              "student_register_success": (200, "5"),
              "student_delete_success": (200, "6"),
-             "student_update_success": (200, "7")
+             "student_update_success": (200, "7"),
+             "passcode_success": (200, "0"),
+             "passcode_incorrect": (200, "1")
              }
 
 

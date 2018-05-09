@@ -55,3 +55,16 @@ def UpdateVendor(req_data):
 
 def DeleteVendor(req_data):
     pass
+
+
+def ValidateVendorPasscode(passcode, vendor_id):
+    vendor = SQLHandle.vendor.query.filter_by(vendor_id=vendor_id).first()
+    if(vendor is not None):
+        if(passcode == vendor.passcode):
+            response = ResponseHandle.GenerateResponse('passcode_success')
+        else:
+            response = ResponseHandle.GenerateResponse('passcode_incorrect')
+    else:
+        response = ResponseHandle.GenerateResponse('passcode_incorrect')
+
+    return response
