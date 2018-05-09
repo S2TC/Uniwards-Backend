@@ -275,8 +275,9 @@ def TestFunc():
     print(uni2[0].mobile_no)
     pass
 
-def AlwaysRun():
-    RegistrationHandle.SendAuthEmail('test@uniwards.xyz', '123')
+def DebugDB():
+    #RegistrationHandle.SendAuthEmail('test@uniwards.xyz', '123')
+    pass
 
 
 def list_routes():
@@ -299,5 +300,5 @@ def list_routes():
 if __name__ == '__main__':
     config = Config()
     SQLHandle.CreateTables()
-    #AlwaysRun()
+    DebugDB()
     app.run(host='0.0.0.0')
