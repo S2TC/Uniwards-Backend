@@ -16,7 +16,7 @@ def GetEnrolmentsByStudentID(student_id):
         response = ResponseHandle.GenerateResponse('enrolment_get_failed')
 
 
-        return response
+    return response
 
 
 def GetEnrolmentsByClassID(uniclass_id):

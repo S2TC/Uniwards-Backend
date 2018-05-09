@@ -30,7 +30,9 @@ def ValidateStudentPasscode(token, passcode):
     payload = jwt.decode(token, app.config['SECRET_KEY'])
     student = SQLHandle.student.query.filter_by(username=payload['username']).first()
     if(student is not None):
-        if(passcode == student.passcode):
+        str_passcode = student.passcode + ""
+        if(passcode == str_passcode):
+            print "SUCCESS"
             response = ResponseHandle.GenerateResponse('passcode_success')
         else:
             response = ResponseHandle.GenerateResponse('passcode_incorrect')
