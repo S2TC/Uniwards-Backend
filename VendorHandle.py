@@ -65,7 +65,7 @@ def DeleteVendor(req_data):
 
 
 def ValidateVendorPasscode(passcode, vendor_id):
-    vendor = SQLHandle.vendor.query.filter_by(vendor_id=vendor_id).first()
+    vendor = SQLHandle.vendor.query.filter_by(id=vendor_id).first()
     if(vendor is not None):
         str_passcode = str(vendor.passcode)
         if(passcode == str_passcode):
