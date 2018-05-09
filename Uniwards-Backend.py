@@ -69,7 +69,7 @@ def ValidateStudentPasscode(passcode):
 
 
 @app.route('/api/validate_vendorpasscode/<passcode>/<vendor_id>')
-def ValidateVendorPasscode(passcode):
+def ValidateVendorPasscode(passcode, vendor_id):
     response = VendorHandle.ValidateVendorPasscode(passcode, vendor_id)
     print response
     return response[0], response[1]
