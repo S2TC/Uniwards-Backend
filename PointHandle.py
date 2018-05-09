@@ -43,7 +43,7 @@ def CreatePoint(req_data):
     temp_point = SQLHandle.point(student_id=req_data['student_id'], reward_id=req_data['reward_id'],
                                            tutor_id=req_data['tutor_id'], date=req_data['date'])
     if(SQLHandle.InsertRowObject(temp_point)):
-        student = SQLHandle.student.query.filter_by(student_id=req_data['student_id'])
+        student = SQLHandle.student.query.filter_by(id=req_data['student_id'])
         StudentHandle.SetTotalPoints(student)
         SQLHandle.CommitSession()
         response = ResponseHandle.GenerateResponse('point_register_success')
