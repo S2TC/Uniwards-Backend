@@ -15,7 +15,7 @@ def GetStudent(token):
 
 def SetTotalPoints(student):
     total_points = 0
-    points = SQLHandle.point.query.filter_by(id=student.id)
+    points = SQLHandle.point.query.filter_by(student_id=student.id)
     point_list = SQLHandle.GetListOfRows(points)
     if (point_list is not None):
         if(len(point_list) > 0):
