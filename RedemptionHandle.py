@@ -56,7 +56,7 @@ def CreateRedemption(req_data):
     temp_redemption = SQLHandle.redemption(date=req_data['date'], student_id=req_data['student_id'],
                                            coupon_id=req_data['coupon_id'])
     if(SQLHandle.InsertRowObject(temp_redemption)):
-        student = SQLHandle.student.query.filter_by(student_id=req_data['student_id'])
+        student = SQLHandle.student.query.filter_by(id=req_data['student_id'])
         StudentHandle.SetTotalPoints(student)
         SQLHandle.CommitSession()
         response = ResponseHandle.GenerateResponse('redemption_register_success')
