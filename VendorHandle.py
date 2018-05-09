@@ -41,7 +41,7 @@ def GetVendorsByType(type):
 def RegisterVendor(req_data):
     temp_vendor = SQLHandle.vendor(name=req_data['name'], mobile=req_data['mobile'],
                                            website=req_data['website'], type=req_data['type'],
-                                           email=req_data['email'])
+                                           email=req_data['email'], passcode=req_data['passcode'])
     if(SQLHandle.InsertRowObject(temp_vendor)):
         response = ResponseHandle.GenerateResponse('vendor_register_success')
     else:

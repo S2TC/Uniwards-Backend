@@ -62,14 +62,14 @@ def StudentLogin():
 
 
 @app.route('/api/validate_studentpasscode/<passcode>')
-def ValidateToken(passcode):
+def ValidateStudentPasscode(passcode):
     response = StudentHandle.ValidateStudentPasscode(request.headers['Token'], passcode)
     print response
     return response[0], response[1]
 
 
 @app.route('/api/validate_vendorpasscode/<passcode>/<vendor_id>')
-def ValidateToken(passcode):
+def ValidateVendorPasscode(passcode):
     response = VendorHandle.ValidateVendorPasscode(passcode, vendor_id)
     print response
     return response[0], response[1]

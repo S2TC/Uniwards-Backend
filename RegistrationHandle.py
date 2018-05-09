@@ -40,7 +40,8 @@ def RegisterUser(req_data):
             print hashed_password
             new_user = SQLHandle.student(fname=req_data['fname'], lname=req_data['lname'], mobile_no=req_data['mobile'],
                                             username=req_data['username'], password=hashed_password, birth=parsed_bd, type=st_type,
-                                            email=req_data['email'], auth_status=0, uni_id=uni_id)
+                                            email=req_data['email'], auth_status=0, passcode=req_data['passcode'],
+                                            uni_id=uni_id)
 
             if(SQLHandle.InsertRowObject(new_user)):
                 response = ResponseHandle.GenerateResponse('register_success')

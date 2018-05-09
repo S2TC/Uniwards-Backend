@@ -198,7 +198,7 @@ class student(db.Model):
     email = db.Column(db.Text)
     auth_status = db.Column(db.Integer)
     total_points = db.Column(db.Integer)
-    passcode = db.Column(db.Interger)
+    passcode = db.Column(db.Integer)
     uni_id = db.Column(db.Integer, db.ForeignKey('university.id'))
 
     def __init__(self, fname, lname, mobile_no, username, password, birth, type, email, auth_status, passcode, uni_id):
