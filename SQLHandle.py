@@ -152,12 +152,13 @@ class redemption(db.Model):
 
 
 class point(db.Model):
-    student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    reward_id = db.Column(db.Integer, db.ForeignKey('reward.id'), primary_key=True)
-    tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
-    date = db.Column(db.VARCHAR(10), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
+    reward_id = db.Column(db.Integer, db.ForeignKey('reward.id'))
+    tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'))
+    date = db.Column(db.VARCHAR(10))
 
-
+    student = SQLHandle.student.query.filter_by(id=req_data['student_id']).first()
     def __init__(self, student_id, reward_id, tutor_id, date):
         self.student_id = student_id
         self.reward_id = reward_id

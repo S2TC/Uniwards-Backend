@@ -26,6 +26,12 @@ def SetTotalPoints(student):
                 student.total_points = total_points
                 SQLHandle.CommitSession()
 
+def SubtractPoints(student, value):
+    total_points = 0
+    if(student is not None):
+        student.total_points = student.total_points - value
+        SQLHandle.CommitSession()
+
 def ValidateStudentPasscode(token, passcode):
     payload = jwt.decode(token, app.config['SECRET_KEY'])
     student = SQLHandle.student.query.filter_by(username=payload['username']).first()
