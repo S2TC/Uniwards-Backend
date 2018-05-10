@@ -158,7 +158,6 @@ class point(db.Model):
     tutor_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     date = db.Column(db.VARCHAR(10))
 
-    student = SQLHandle.student.query.filter_by(id=req_data['student_id']).first()
     def __init__(self, student_id, reward_id, tutor_id, date):
         self.student_id = student_id
         self.reward_id = reward_id

@@ -65,7 +65,7 @@ def CreateRedemption(req_data):
                                            coupon_id=req_data['coupon_id'])
     if(SQLHandle.InsertRowObject(temp_redemption)):
         student = SQLHandle.student.query.filter_by(id=req_data['student_id']).first()
-        coupon = SQLHandle.coupon.query.filter_by(id=temp_redemption.id).first()
+        coupon = SQLHandle.coupon.query.filter_by(id=temp_redemption.coupon_id).first()
         if(coupon is not None):
             StudentHandle.SubtractPoints(student, coupon.point_cost)
             response = ResponseHandle.GenerateResponse('redemption_register_success')
