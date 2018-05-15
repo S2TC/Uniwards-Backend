@@ -48,7 +48,7 @@ def ValidateStudentPasscode(token, passcode):
     return response
 
 def ValidateTutorPasscode(passcode, tutor_id):
-    tutor = SQLHandle.tutor.query.filter_by(id=tutor_id).first()
+    tutor = SQLHandle.student.query.filter_by(id=tutor_id).first()
     if(tutor is not None):
         str_passcode = str(tutor.passcode)
         if(passcode == str_passcode):
