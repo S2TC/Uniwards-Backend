@@ -272,7 +272,7 @@ def DeleteEnrolment():
 
 @app.route("/adminlogin", methods=['GET', 'POST'])
 def ALogin():
-    AdminLogin.hello(request)
+    return AdminLogin.hello(request)
 
 def TestFunc():
     uni = SQLHandle.university(1, "test", "test", "1234")

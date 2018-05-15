@@ -20,4 +20,4 @@ def hello(request):
         else:
             flash('Error: All the form fields are required. ')
 
-    return render_template('hello.html', form=form)
+    return render_template('AdminLogin.html', form=form)
