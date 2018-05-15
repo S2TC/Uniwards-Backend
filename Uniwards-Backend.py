@@ -1,8 +1,11 @@
-from flask import Flask, request
+from flask import Flask, render_template, flash, request
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+
 from ConfigHandle import Config
 import SQLHandle, RegistrationHandle, LoginHandle, ResponseHandle, UniversityHandle, CouponHandle, RewardHandle
 import PointHandle, RedemptionHandle, VendorHandle, EnrolmentHandle, UniclassHandle, StudentHandle
 from LogHandle import Logger, LogLevel
+import AdminLogin, AdminNewEnrolment, AdminNewPoint, AdminNewRedemption, AdminNewReward, AdminNewUniclass,AdminNewVendor,AdminRegisterUniversity,AdminNewCoupon
 
 app = Flask(__name__)
 log_inst = Logger("Uniwards-Backend.txt")
@@ -267,6 +270,9 @@ def DeleteEnrolment():
     return response[0], response[1]
 '''-------------------------------------------------------'''
 
+@app.route("/adminlogin", methods=['GET', 'POST'])
+def ALogin():
+    AdminLogin.hello(request)
 
 def TestFunc():
     uni = SQLHandle.university(1, "test", "test", "1234")
