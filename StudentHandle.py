@@ -46,3 +46,17 @@ def ValidateStudentPasscode(token, passcode):
         response = ResponseHandle.GenerateResponse('passcode_incorrect')
 
     return response
+
+def ValidateTutorPasscode(passcode, tutor_id):
+    tutor = SQLHandle.tutor.query.filter_by(id=tutor_id).first()
+    if(tutor is not None):
+        str_passcode = str(tutor.passcode)
+        if(passcode == str_passcode):
+            print "SUCCESS"
+            response = True
+        else:
+            response = False
+    else:
+        response = False
+
+    return response

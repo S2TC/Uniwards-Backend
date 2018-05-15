@@ -1,4 +1,4 @@
-import ResponseHandle, SQLHandle, StudentHandle
+import ResponseHandle, SQLHandle, StudentHandle, VendorHandle
 from datetime import datetime
 def GetPointsByStudentID(student_id):
     temp_points = SQLHandle.point.query.filter_by(student_id=student_id)
@@ -49,12 +49,15 @@ def GetPointsByRewardID(reward_id):
 
 def CreatePoint(req_data):
     #parsed_date = datetime.strptime(req_data['date'], "%m/%d/%Y").strftime('%m/%d/%Y')
-    temp_point = SQLHandle.point(student_id=req_data['student_id'], reward_id=req_data['reward_id'],
-                                           tutor_id=req_data['tutor_id'], date=req_data['date'])
-    if(SQLHandle.InsertRowObject(temp_point)):
-        student = SQLHandle.student.query.filter_by(id=req_data['student_id']).first()
-        StudentHandle.SetTotalPoints(student)
-        response = ResponseHandle.GenerateResponse('point_register_success')
+    if(StudentHandle.ValidateTutorPasscode(req_data['tutor_passcode'], req_data['tutor_id'])):
+        temp_point = SQLHandle.point(student_id=req_data['student_id'], reward_id=req_data['reward_id'],
+                                               tutor_id=req_data['tutor_id'], date=req_data['date'])
+        if(SQLHandle.InsertRowObject(temp_point)):
+            student = SQLHandle.student.query.filter_by(id=req_data['student_id']).first()
+            StudentHandle.SetTotalPoints(student)
+            response = ResponseHandle.GenerateResponse('point_register_success')
+        else:
+            response = ResponseHandle.GenerateResponse('point_register_failed')
     else:
         response = ResponseHandle.GenerateResponse('point_register_failed')
     return response

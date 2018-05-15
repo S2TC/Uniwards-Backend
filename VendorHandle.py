@@ -76,3 +76,4 @@ def ValidateVendorPasscode(passcode, vendor_id):
         response = ResponseHandle.GenerateResponse('passcode_incorrect')
 
     return response
+
